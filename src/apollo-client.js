@@ -54,12 +54,6 @@ const wsLink =
       reconnect: true,
       timeout: 30000,
       lazy: true,
-      // connectionParams: async () => {
-      //   const token = await getAuth("apollo-token");
-      //   return Authorization
-      //     ? { Authorization, headers: { Authorization } }
-      //     : {};
-      // },
       connectionParams: async () => {
         const Authorization = await getAuth("apollo-token");
         return Authorization
@@ -67,18 +61,6 @@ const wsLink =
           : {};
       },
     })
-    // {
-    // uri: "ws://localhost:8081/v1/graphql",
-    // options: {
-    //   reconnect: true,
-    //   timeout: 30000,
-    //   connectionParams: () => {
-    //     const Authorization = getAuth("apollo-token");
-    //     return Authorization
-    //       ? { Authorization, headers: { Authorization } }
-    //       : {};
-    //   },
-    //},
   );
 
 //using the ability to split links, you can send data to each link
