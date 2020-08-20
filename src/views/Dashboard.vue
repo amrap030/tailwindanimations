@@ -1,14 +1,14 @@
 <template>
   <div>
-    <div class="flex flex-col h-screen">
+    <!-- <div class="flex flex-col h-screen">
       <StickyHeader />
       <div class="flex flex-1 min-w-0 overflow-hidden bg-gray-100">
         <SideBar />
 
-        <div class="w-full min-h-0">
-          <main class="flex h-full p-6">
-            Hallo3
-            <!-- EMPTY workout section
+    <div class="w-full min-h-0">-->
+    <main class="flex h-full p-6">
+      Hallo3
+      <!-- EMPTY workout section
           <div class="my-auto">
           <p
             class="w-full text-sm font-bold text-center text-gray-900"
@@ -36,17 +36,17 @@
             </span>
           </div>
           </div>
-            -->
-          </main>
-        </div>
+      -->
+    </main>
+    <!-- </div>
       </div>
-    </div>
+    </div>-->
   </div>
 </template>
 
 <script>
-import SideBar from "@/components/SideBar";
-import StickyHeader from "@/components/StickyHeader";
+//import SideBar from "@/components/SideBar";
+//import StickyHeader from "@/components/StickyHeader";
 
 // import simplebar from "simplebar-vue";
 // import "simplebar/dist/simplebar.min.css";
@@ -55,8 +55,8 @@ import StickyHeader from "@/components/StickyHeader";
 export default {
   name: "Dashboard",
   components: {
-    SideBar,
-    StickyHeader
+    //SideBar,
+    //StickyHeader
   },
   data() {
     return {};

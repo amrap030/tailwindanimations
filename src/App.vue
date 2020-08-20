@@ -1,6 +1,16 @@
 <template>
   <div id="app" :class="{ 'theme-dark': getDark }">
-    <router-view />
+    <div class="flex flex-col h-screen">
+      <StickyHeader />
+      <div
+        class="flex flex-1 min-w-0 overflow-hidden transition duration-300 ease-in-out bg-gray-50 dark:bg-gray-900"
+      >
+        <SideBar />
+        <div class="w-full min-h-0">
+          <router-view />
+        </div>
+      </div>
+    </div>
     <vue-progress-bar></vue-progress-bar>
     <ModalIdle v-if="isIdle && this.$store.getters.user.loggedIn" />
   </div>
@@ -9,17 +19,19 @@
 <script>
 import { mapGetters } from "vuex";
 import ModalIdle from "@/components/ModalIdle";
+import SideBar from "@/components/SideBar";
+import StickyHeader from "@/components/StickyHeader";
 
 export default {
-  components: { ModalIdle },
+  components: { ModalIdle, SideBar, StickyHeader },
   computed: {
     ...mapGetters({
-      getDark: "getDark",
+      getDark: "getDark"
     }),
     isIdle() {
       return this.$store.state.idleVue.isIdle;
-    },
-  },
+    }
+  }
 };
 </script>
 
