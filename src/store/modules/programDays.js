@@ -7,7 +7,7 @@ import { apolloClient } from "../../apollo-client";
 export default {
   namespaced: true,
   state: {
-    programDays: [],
+    programDays: []
   },
   mutations: {
     SET_PROGRAMDAYS(state, data) {
@@ -18,12 +18,12 @@ export default {
     },
     ADD_BLANK_PROGRAMDAY_DB(state, data) {
       Vue.set(
-        state.programDays.find((programday) => programday.id === data.oldId),
+        state.programDays.find(programday => programday.id === data.oldId),
         "createdAt",
         data.createdAt
       );
       Vue.set(
-        state.programDays.find((programday) => programday.id === data.oldId),
+        state.programDays.find(programday => programday.id === data.oldId),
         "id",
         data.id
       );
@@ -36,7 +36,7 @@ export default {
         exercises: data.exercises,
         createdAt: data.createdAt,
         updatedAt: data.updatedAt,
-        weekId: data.weekId,
+        weekId: data.weekId
       };
       state.programDays.push(programday);
     },
@@ -55,20 +55,20 @@ export default {
     },
     DELETE_PROGRAMDAYS_BY_WEEK_ID(state, data) {
       state.programDays = state.programDays.filter(
-        (programday) => programday.weekId !== data
+        programday => programday.weekId !== data
       );
     },
     UPDATE_EXERCISES_IN_PROGRAMDAY(state, data) {
       console.log(data);
       Vue.set(
-        state.programDays.find((programday) => programday.id === data.id),
+        state.programDays.find(programday => programday.id === data.id),
         "exercises",
         data.exercises
       );
       console.log(
-        state.programDays.find((programday) => programday.id === data.id)
+        state.programDays.find(programday => programday.id === data.id)
       );
-    },
+    }
   },
   actions: {
     async initializeProgramDays({ commit }, data) {
@@ -80,7 +80,7 @@ export default {
       if (data) {
         commit(
           "SET_PROGRAMDAYS",
-          data.data.ProgramDay.map((programDay) => ({
+          data.data.ProgramDay.map(programDay => ({
             id: programDay.id,
             name: programDay.name,
             notes: programDay.notes,
@@ -90,7 +90,7 @@ export default {
               programDay.updatedAt !== null
                 ? Date.parse(programDay.updatedAt)
                 : programDay.updatedAt,
-            weekId: programDay.weekId,
+            weekId: programDay.weekId
           }))
         );
       } else {
@@ -101,7 +101,7 @@ export default {
       if (data) {
         const dayCount =
           this.state.programdays.programDays.filter(
-            (programday) => programday.weekId === data
+            programday => programday.weekId === data
           ).length + 1;
         const programday = {
           name: `Day ${dayCount}`,
@@ -111,7 +111,7 @@ export default {
           userId: firebase.auth().currentUser.uid,
           createdAt: new Date().toISOString(),
           updatedAt: null,
-          id: Math.round(Math.random() * -1000000),
+          id: Math.round(Math.random() * -1000000)
         };
         commit("ADD_BLANK_PROGRAMDAY", programday);
       }
@@ -125,13 +125,13 @@ export default {
               user_id: firebase.auth().currentUser.uid,
               name: data.name,
               exercises: data.exercises,
-              weekId: data.weekId,
-            },
+              weekId: data.weekId
+            }
           })
-          .then((response) => {
+          .then(response => {
             const transfer = {
               oldId: data.id,
-              ...response.data.insert_ProgramDay_one,
+              ...response.data.insert_ProgramDay_one
             };
             commit("ADD_BLANK_PROGRAMDAY_DB", transfer);
           });
@@ -148,10 +148,10 @@ export default {
           .mutate({
             mutation: require("../../graphql/deleteProgramDaysByWeekId.gql"),
             variables: {
-              weekId: data,
-            },
+              weekId: data
+            }
           })
-          .then((data) => {
+          .then(data => {
             console.log(data);
           });
       }
@@ -166,18 +166,18 @@ export default {
             variables: {
               user_id: firebase.auth().currentUser.uid,
               exercises: data.exercises,
-              id: data.id,
-            },
+              id: data.id
+            }
           })
-          .then((response) => {
+          .then(response => {
             console.log(response);
           });
       }
-    },
+    }
   },
   getters: {
     getProgramDays(state) {
       return state.programDays;
-    },
-  },
+    }
+  }
 };

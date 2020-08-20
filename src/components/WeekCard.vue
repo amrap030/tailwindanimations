@@ -110,20 +110,20 @@ export default {
   },
   props: {
     item: {
-      required: true,
-    },
+      required: true
+    }
   },
   data() {
     return {
       isOpen: false,
       lightMode: true,
-      darkMode: false,
+      darkMode: false
     };
   },
   computed: {
     ...mapGetters({
-      getActiveProgramWeek: "programweeks/getActiveProgramWeek",
-    }),
+      getActiveProgramWeek: "programweeks/getActiveProgramWeek"
+    })
   },
   methods: {
     setActiveWeek(programweek) {
@@ -144,8 +144,8 @@ export default {
     },
     hide() {
       this.$modal.hide("modal-edit-week");
-    },
-  },
+    }
+  }
 };
 </script>
 

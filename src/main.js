@@ -24,7 +24,7 @@ Vue.use(IdleVue, {
   eventEmitter: eventsHub,
   store,
   idleTime: 3600000,
-  startAtIdle: false,
+  startAtIdle: false
 });
 
 Vue.use(TastyBurgerButton);
@@ -41,7 +41,7 @@ const options = {
   thickness: "3px",
   autoRevert: true,
   location: "top",
-  inverse: false,
+  inverse: false
 };
 
 Vue.use(VueProgressBar, options);
@@ -52,7 +52,7 @@ Vue.use(vuescroll, {
   ops: {
     // The global config
   },
-  name: "myScroll", // customize component name, default -> vueScroll
+  name: "myScroll" // customize component name, default -> vueScroll
 });
 
 Vue.directive("ripple", Ripple);
@@ -61,7 +61,7 @@ Vue.directive("focus", {
   inserted: function(el) {
     // Focus the element
     el.focus();
-  },
+  }
 });
 Vue.config.productionTip = false;
 
@@ -80,7 +80,7 @@ const firebaseConfig = {
   storageBucket: "workoutapp-ed641.appspot.com",
   messagingSenderId: "1068612630628",
   appId: "1:1068612630628:web:4dd75fec51ab2f58520771",
-  measurementId: "G-PF223K6P4C",
+  measurementId: "G-PF223K6P4C"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
@@ -88,14 +88,14 @@ firebase.initializeApp(firebaseConfig);
 let app;
 
 //Executes if the auth states of a user changes
-firebase.auth().onAuthStateChanged(async (user) => {
+firebase.auth().onAuthStateChanged(async user => {
   //Create App
   if (!app) {
     app = new Vue({
       router,
       store,
       apolloClient,
-      render: (h) => h(App),
+      render: h => h(App)
     }).$mount("#app");
   }
   //Set user in Store
@@ -103,27 +103,27 @@ firebase.auth().onAuthStateChanged(async (user) => {
   if (user) {
     return user
       .getIdToken()
-      .then((token) =>
+      .then(token =>
         firebase
           .auth()
           .currentUser.getIdTokenResult()
-          .then((result) => {
+          .then(result => {
             if (result.claims["https://hasura.io/jwt/claims"]) {
               return token;
             }
             const endpoint =
               "https://us-central1-workoutapp-ed641.cloudfunctions.net/refreshToken";
-            return fetch(`${endpoint}?uid=${user.uid}`).then((res) => {
+            return fetch(`${endpoint}?uid=${user.uid}`).then(res => {
               if (res.status === 200) {
                 return user.getIdToken(true);
               }
-              return res.json().then((e) => {
+              return res.json().then(e => {
                 throw e;
               });
             });
           })
       )
-      .then((validToken) => {
+      .then(validToken => {
         if (typeof localStorage !== "undefined" && validToken) {
           localStorage.setItem("apollo-token", validToken);
         }

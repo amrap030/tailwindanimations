@@ -95,12 +95,12 @@ export default {
   data() {
     return {
       programName: "",
-      program: "",
+      program: ""
     };
   },
   methods: {
     ...mapActions({
-      updateProgram: "programs/updateProgram",
+      updateProgram: "programs/updateProgram"
     }),
     close() {
       this.program = "";
@@ -125,8 +125,8 @@ export default {
       this.program = "";
       this.programName = "";
       this.$modal.hide("modal-edit-program");
-    },
-  },
+    }
+  }
 };
 </script>
 

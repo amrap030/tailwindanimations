@@ -81,7 +81,7 @@
                                 :customStyle="{
                                   height: '3.5rem !important',
                                   width: '3.5rem !important',
-                                  fontSize: '20px !important',
+                                  fontSize: '20px !important'
                                 }"
                               ></Avatar>
                               <!-- <input
@@ -569,7 +569,7 @@ export default {
     vueDropzone: vue2Dropzone,
     Avatar,
     Languages,
-    Units,
+    Units
   },
   data() {
     return {
@@ -579,7 +579,7 @@ export default {
         url: "https://httpbin.org/post",
         thumbnailWidth: 150,
         maxFilesize: 0.5,
-        headers: { "My-Awesome-Header": "header value" },
+        headers: { "My-Awesome-Header": "header value" }
       },
       ops: {
         vuescroll: {},
@@ -590,7 +590,7 @@ export default {
           scrollingY: true,
           speed: 300,
           easing: undefined,
-          verticalNativeBarPos: "right",
+          verticalNativeBarPos: "right"
         },
         rail: {},
         bar: {
@@ -603,13 +603,13 @@ export default {
           specifyBorderRadius: false,
           minSize: 0,
           size: "6px",
-          disable: false,
-        },
-      },
+          disable: false
+        }
+      }
     };
   },
   computed: {},
-  methods: {},
+  methods: {}
 };
 </script>
 

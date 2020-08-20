@@ -4,6 +4,7 @@ const purgecss = require("@fullhuman/postcss-purgecss")({
     "./src/**/*.html",
     "./src/**/*.vue",
     "./src/**/*.jsx",
+    "./src/App.vue",
     // etc.
   ],
   whitelist: [
@@ -25,9 +26,6 @@ const purgecss = require("@fullhuman/postcss-purgecss")({
     "bg-purple-100",
     "bg-green-100",
     "bg-indigo-100",
-    "tooltip",
-    "tooltip-arrow",
-    "tooltip-inner",
   ],
 
   // This is the function used to extract class names from your templates
@@ -47,7 +45,7 @@ module.exports = {
     // ...
     require("tailwindcss"),
     require("autoprefixer"),
-    ...(process.env.NODE_ENV === "production" ? [] : []),
+    ...(process.env.NODE_ENV === "production" ? [purgecss] : [purgecss]),
     // ...
   ],
 };

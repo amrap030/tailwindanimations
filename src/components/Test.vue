@@ -86,7 +86,7 @@ import {
   ListboxLabel,
   ListboxButton,
   ListboxList,
-  ListboxOption,
+  ListboxOption
 } from "@tailwindui/vue";
 import { mapGetters } from "vuex";
 
@@ -97,28 +97,28 @@ export default {
     ListboxLabel,
     ListboxButton,
     ListboxList,
-    ListboxOption,
+    ListboxOption
   },
   data() {
     return {
       selectedProgramId: "",
-      programs: [{ name: "Blank Template", id: 12345 }],
+      programs: [{ name: "Blank Template", id: 12345 }]
     };
   },
   computed: {
     selectedProgram() {
       return this.programs.find(
-        (program) => this.selectedProgramId === program.id
+        program => this.selectedProgramId === program.id
       );
     },
     ...mapGetters({
-      getPrograms: "programs/getPrograms",
-    }),
+      getPrograms: "programs/getPrograms"
+    })
   },
   created() {
-    this.getPrograms.forEach((element) => {
+    this.getPrograms.forEach(element => {
       this.programs.push(element);
     });
-  },
+  }
 };
 </script>

@@ -333,7 +333,9 @@
             </div>
 
             <!-- <div class="hidden h-full overflow-hidden sm:flex sm:flex-col"> -->
-            <div class="hidden max-h-full mt-2 overflow-hidden sm:flex sm:flex-col">
+            <div
+              class="hidden max-h-full mt-2 overflow-hidden sm:flex sm:flex-col"
+            >
               <vuescroll :ops="ops">
                 <div class="pb-2 pr-2">
                   <ChooseWorkout :programs="programs" />
