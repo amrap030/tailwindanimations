@@ -1,0 +1,14 @@
+subscription($user_id: String!, $last_received: timestamptz!) {
+  ProgramDay(
+    where: { userId: { _eq: $user_id }, createdAt: { _gt: $last_received } }
+    order_by: { createdAt: asc }
+  ) {
+    id
+    name
+    notes
+    exercises
+    createdAt
+    updatedAt
+    weekId
+  }
+}

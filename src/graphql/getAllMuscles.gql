@@ -1,0 +1,9 @@
+query {
+  Muscle {
+    id
+    name
+    color
+    createdAt
+    updatedAt
+  }
+}

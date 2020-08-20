@@ -1,0 +1,9 @@
+mutation($user_id: String!, $name: String!, $muscle_id: uuid!) {
+  insert_Exercise_one(
+    object: { userId: $user_id, name: $name, muscle_id: $muscle_id }
+  ) {
+    id
+    createdAt
+    updatedAt
+  }
+}

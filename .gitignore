@@ -22,3 +22,17 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+/live/
+
+# experimental
+test.json
+test2.json
+test3.json
+test4.json
+y.json
+z.json
+day.json
+
+# Firebase
+.firebase

@@ -1,0 +1,8 @@
+mutation($weekId: uuid!) {
+  delete_ProgramDay(where: { weekId: { _eq: $weekId } }) {
+    returning {
+      id
+      name
+    }
+  }
+}

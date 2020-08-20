@@ -1,0 +1,6 @@
+mutation($id: uuid!, $like: Boolean) {
+  update_Exercise_by_pk(pk_columns: { id: $id }, _set: { like: $like }) {
+    id
+    like
+  }
+}

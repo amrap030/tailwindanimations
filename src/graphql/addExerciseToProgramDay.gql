@@ -1,0 +1,11 @@
+mutation($user_id: String!, $id: uuid!, $exercises: json!) {
+  update_ProgramDay(
+    where: { id: { _eq: $id }, _and: { userId: { _eq: $user_id } } }
+    _set: { exercises: $exercises }
+  ) {
+    returning {
+      id
+      exercises
+    }
+  }
+}

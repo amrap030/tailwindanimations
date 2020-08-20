@@ -1,0 +1,13 @@
+mutation($user_id: String!, $name: String!, $exercises: json!, $weekId: uuid!) {
+  insert_ProgramDay_one(
+    object: {
+      userId: $user_id
+      name: $name
+      exercises: $exercises
+      weekId: $weekId
+    }
+  ) {
+    id
+    createdAt
+  }
+}

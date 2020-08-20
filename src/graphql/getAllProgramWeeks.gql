@@ -1,0 +1,13 @@
+query($user_id: String!) {
+  ProgramWeek(where: { userId: { _eq: $user_id } }) {
+    id
+    programId
+    startDate
+    endDate
+    status
+    finished
+    createdAt
+    updatedAt
+    name
+  }
+}

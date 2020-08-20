@@ -1,0 +1,19 @@
+mutation(
+  $user_id: String!
+  $name: String!
+  $status: String!
+  $programId: uuid!
+) {
+  insert_ProgramWeek_one(
+    object: {
+      userId: $user_id
+      name: $name
+      status: $status
+      programId: $programId
+    }
+  ) {
+    id
+    createdAt
+    updatedAt
+  }
+}

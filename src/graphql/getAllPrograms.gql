@@ -1,0 +1,11 @@
+query($user_id: String!) {
+  Program(where: { userId: { _eq: $user_id } }) {
+    id
+    name
+    finished
+    endDate
+    startDate
+    createdAt
+    updatedAt
+  }
+}

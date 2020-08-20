@@ -1,0 +1,7 @@
+mutation($user_id: String!, $name: String!) {
+  insert_Program_one(object: { userId: $user_id, name: $name }) {
+    id
+    name
+    createdAt
+  }
+}

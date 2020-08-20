@@ -1,0 +1,11 @@
+query($user_id: String!) {
+  ProgramDay(where: { userId: { _eq: $user_id } }) {
+    id
+    name
+    notes
+    exercises
+    createdAt
+    updatedAt
+    weekId
+  }
+}

@@ -1,0 +1,10 @@
+query($user_id: String!) {
+  Exercise(where: { userId: { _eq: $user_id } }) {
+    id
+    name
+    muscle_id
+    createdAt
+    updatedAt
+    like
+  }
+}

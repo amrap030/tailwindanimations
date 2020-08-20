@@ -1,0 +1,23 @@
+mutation(
+  $user_id: String!
+  $name: String!
+  $endDate: date!
+  $startDate: date!
+) {
+  insert_Program_one(
+    object: {
+      userId: $user_id
+      name: $name
+      endDate: $endDate
+      startDate: $startDate
+    }
+  ) {
+    id
+    name
+    startDate
+    endDate
+    createdAt
+    updatedAt
+    finished
+  }
+}
