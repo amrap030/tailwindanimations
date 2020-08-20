@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/amrap030/workoutapp.svg?style=shield&circle-token=fff006b0709ed9993416c2b9afb5583b3d7dc6e9)](https://circleci.com/gh/amrap030/workoutapp)
+
 # frontend
 
 ## Project setup
