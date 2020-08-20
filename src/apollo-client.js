@@ -21,7 +21,7 @@ const httpLink = new HttpLink({
   uri: httpAdress,
 });
 
-//let token = localStorage.getItem("apollo-token");
+// let token = localStorage.getItem("apollo-token");
 
 async function getAuth(tokenName) {
   if (typeof window !== "undefined") {
