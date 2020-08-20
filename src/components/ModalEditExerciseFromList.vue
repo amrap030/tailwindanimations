@@ -137,12 +137,12 @@ export default {
   data() {
     return {
       exercise: "",
-      exerciseName: "",
+      exerciseName: ""
     };
   },
   methods: {
     ...mapActions({
-      updateExerciseName: "exercises/updateExerciseName",
+      updateExerciseName: "exercises/updateExerciseName"
     }),
     hide() {
       this.$modal.hide("modal-edit-exercise-from-list");
@@ -168,8 +168,8 @@ export default {
       this.$modal.hide("modal-edit-exercise-from-list");
       this.exercise = "";
       this.exerciseName = "";
-    },
-  },
+    }
+  }
 };
 </script>
 

@@ -11,8 +11,8 @@ import exercises from "./modules/exercises";
 
 Vue.use(Vuex);
 
-const subscriptions = (store) => {
-  store.subscribe((mutation) => {
+const subscriptions = store => {
+  store.subscribe(mutation => {
     switch (mutation.type) {
       case "programs/ADD_BLANK_PROGRAM":
         store.dispatch("programweeks/addBlankProgramWeek", mutation.payload.id);
@@ -47,7 +47,7 @@ const subscriptions = (store) => {
       case "programs/DUPLICATE_PROGRAM_DB":
         store.dispatch("programweeks/duplicateProgramWeeks", {
           ...mutation.payload,
-          activeProgramId: store.getters["programs/getActiveProgram"].id,
+          activeProgramId: store.getters["programs/getActiveProgram"].id
         });
         break;
       case "programweeks/DUPLICATE_PROGRAMWEEKS":
@@ -65,23 +65,23 @@ export default new Vuex.Store({
   plugins: [
     createPersistedState({
       storage: {
-        getItem: (key) => ls.get(key),
+        getItem: key => ls.get(key),
         setItem: (key, value) => ls.set(key, value),
-        removeItem: (key) => ls.remove(key),
-      },
+        removeItem: key => ls.remove(key)
+      }
     }),
-    subscriptions,
+    subscriptions
   ],
   state: {
     user: {
       loggedIn: false,
-      data: null,
+      data: null
     },
     week: {
       edit: false,
-      data: null,
+      data: null
     },
-    dark: false,
+    dark: false
   },
   mutations: {
     SET_LOGGED_IN(state, value) {
@@ -98,7 +98,7 @@ export default new Vuex.Store({
     },
     SET_DARK(state, data) {
       state.dark = data;
-    },
+    }
   },
   actions: {
     fetchUser({ commit }, user) {
@@ -107,12 +107,12 @@ export default new Vuex.Store({
         commit("SET_USER", {
           displayName: user.displayName,
           email: user.email,
-          uid: user.uid,
+          uid: user.uid
         });
       } else {
         commit("SET_USER", null);
       }
-    },
+    }
   },
   getters: {
     user(state) {
@@ -120,6 +120,6 @@ export default new Vuex.Store({
     },
     getDark(state) {
       return state.dark;
-    },
-  },
+    }
+  }
 });

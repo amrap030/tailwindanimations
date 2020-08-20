@@ -93,13 +93,13 @@
                         popperOptions: {
                           modifiers: {
                             preventOverflow: {
-                              boundariesElement: 'offsetParent',
-                            },
-                          },
+                              boundariesElement: 'offsetParent'
+                            }
+                          }
                         },
                         placement: 'top',
                         offset: 10,
-                        targetClasses: ['it-has-a-tooltip'],
+                        targetClasses: ['it-has-a-tooltip']
                       }"
                     >
                       <svg
@@ -124,12 +124,12 @@
                         popperOptions: {
                           modifiers: {
                             preventOverflow: {
-                              boundariesElement: 'offsetParent',
-                            },
-                          },
+                              boundariesElement: 'offsetParent'
+                            }
+                          }
                         },
                         placement: 'top',
-                        offset: 10,
+                        offset: 10
                       }"
                       @click.prevent="duplicateActiveProgram"
                     >
@@ -155,12 +155,12 @@
                         popperOptions: {
                           modifiers: {
                             preventOverflow: {
-                              boundariesElement: 'offsetParent',
-                            },
-                          },
+                              boundariesElement: 'offsetParent'
+                            }
+                          }
                         },
                         placement: 'top',
-                        offset: 10,
+                        offset: 10
                       }"
                       @click.prevent="show"
                     >
@@ -187,12 +187,12 @@
                         popperOptions: {
                           modifiers: {
                             preventOverflow: {
-                              boundariesElement: 'offsetParent',
-                            },
-                          },
+                              boundariesElement: 'offsetParent'
+                            }
+                          }
                         },
                         placement: 'top',
-                        offset: 10,
+                        offset: 10
                       }"
                     >
                       <svg
@@ -400,7 +400,7 @@ export default {
     ModalAddExercise,
     ModalDeleteProgram,
     ModalEditExercise,
-    ModalEditProgram,
+    ModalEditProgram
   },
   data() {
     return {
@@ -413,7 +413,7 @@ export default {
           scrollingY: true,
           speed: 300,
           easing: undefined,
-          verticalNativeBarPos: "right",
+          verticalNativeBarPos: "right"
         },
         rail: {},
         bar: {
@@ -426,15 +426,15 @@ export default {
           specifyBorderRadius: false,
           minSize: 0,
           size: "6px",
-          disable: false,
-        },
+          disable: false
+        }
       },
       programdays: [],
       programs: [],
       programweeks: [],
       exercises: [],
       muscles: [],
-      last_received: "",
+      last_received: ""
     };
   },
   beforeCreate: function() {
@@ -446,17 +446,17 @@ export default {
       getPrograms: "programs/getPrograms",
       getProgramWeeks: "programweeks/getWeeks",
       getActiveProgram: "programs/getActiveProgram",
-      getActiveProgramWeek: "programweeks/getActiveProgramWeek",
+      getActiveProgramWeek: "programweeks/getActiveProgramWeek"
     }),
     filterActiveProgramWeeks() {
-      return this.programweeks.filter((programweek) => {
+      return this.programweeks.filter(programweek => {
         return programweek.programId === this.getActiveProgram.id;
       });
     },
     filterActiveWeekDays() {
       if (this.getActiveProgramWeek) {
         const test = this.getProgramDays
-          .filter((programday) => {
+          .filter(programday => {
             return programday.weekId === this.getActiveProgramWeek.id;
           })
           .sort((a, b) => a.createdAt - b.createdAt);
@@ -467,12 +467,12 @@ export default {
     },
     getSortedPrograms() {
       return this.programs.slice().sort((a, b) => a.createdAt - b.createdAt);
-    },
+    }
   },
   methods: {
     ...mapActions({
       initializeProgramDays: "programdays/initializeProgramDays",
-      duplicateProgram: "programs/duplicateProgram",
+      duplicateProgram: "programs/duplicateProgram"
     }),
     show() {
       this.$modal.show("modal-delete-program");
@@ -482,7 +482,7 @@ export default {
     },
     setActiveProgram(program) {
       this.$store.commit("programs/SET_ACTIVE_PROGRAM", program);
-      const weeks = this.getProgramWeeks.filter((programweek) => {
+      const weeks = this.getProgramWeeks.filter(programweek => {
         return programweek.programId === program.id;
       });
       if (weeks.length === 0) {
@@ -500,16 +500,16 @@ export default {
       } catch (error) {
         console.log(error);
       }
-    },
+    }
   },
   async created() {
     const that = this;
     apolloClient
       .query({
         query: require("../graphql/getAllProgramDays.gql"),
-        variables: { user_id: firebase.auth().currentUser.uid },
+        variables: { user_id: firebase.auth().currentUser.uid }
       })
-      .then((data) => {
+      .then(data => {
         that.last_received = Date.now();
         this.$store.dispatch("programdays/initializeProgramDays", data);
         // start a subscription
@@ -519,8 +519,8 @@ export default {
             query: require("../graphql/getNewProgramDay.gql"),
             variables: {
               last_received: new Date(that.last_received).toISOString(),
-              user_id: firebase.auth().currentUser.uid,
-            },
+              user_id: firebase.auth().currentUser.uid
+            }
           })
           .subscribe({
             next(data) {
@@ -528,15 +528,15 @@ export default {
             },
             error(err) {
               console.error("err", err);
-            },
+            }
           });
       });
     apolloClient
       .query({
         query: require("../graphql/getAllPrograms.gql"),
-        variables: { user_id: firebase.auth().currentUser.uid },
+        variables: { user_id: firebase.auth().currentUser.uid }
       })
-      .then((data) => {
+      .then(data => {
         //that.last_received = Date.now();
         this.$store.dispatch("programs/initializePrograms", data);
         //       // start a subscription
@@ -561,9 +561,9 @@ export default {
     apolloClient
       .query({
         query: require("../graphql/getAllProgramWeeks.gql"),
-        variables: { user_id: firebase.auth().currentUser.uid },
+        variables: { user_id: firebase.auth().currentUser.uid }
       })
-      .then((data) => {
+      .then(data => {
         this.$store.dispatch("programweeks/initializeProgramWeeks", data);
         //       // start a subscription
         //       // this.$apollo
@@ -587,9 +587,9 @@ export default {
     apolloClient
       .query({
         query: require("../graphql/getAllExercises.gql"),
-        variables: { user_id: firebase.auth().currentUser.uid },
+        variables: { user_id: firebase.auth().currentUser.uid }
       })
-      .then((data) => {
+      .then(data => {
         this.$store.dispatch("exercises/initializeExercises", data);
         //       // start a subscription
         //       // this.$apollo
@@ -612,10 +612,10 @@ export default {
       });
     apolloClient
       .query({
-        query: require("../graphql/getAllMuscles.gql"),
+        query: require("../graphql/getAllMuscles.gql")
         //variables: { user_id: firebase.auth().currentUser.uid },
       })
-      .then((data) => {
+      .then(data => {
         this.$store.dispatch("muscles/initializeMuscles", data);
         //       // start a subscription
         //       // this.$apollo
@@ -636,7 +636,7 @@ export default {
         //       //   });
         this.muscles = this.getMuscles;
       });
-  },
+  }
 };
 </script>
 

@@ -93,7 +93,7 @@ import {
   ListboxLabel,
   ListboxButton,
   ListboxList,
-  ListboxOption,
+  ListboxOption
 } from "@tailwindui/vue";
 //import { mapGetters } from "vuex";
 
@@ -104,27 +104,27 @@ export default {
     ListboxLabel,
     ListboxButton,
     ListboxList,
-    ListboxOption,
+    ListboxOption
   },
   props: {
     exercise: {
-      type: String,
+      type: String
     },
     exercises: {
-      type: Array,
-    },
+      type: Array
+    }
   },
   data() {
     return {
-      selectedExerciseId: "",
+      selectedExerciseId: ""
     };
   },
   computed: {
     selectedExercise() {
       return this.exercises.find(
-        (exercise) => this.selectedExerciseId === exercise.id
+        exercise => this.selectedExerciseId === exercise.id
       );
-    },
+    }
     // ...mapGetters({
     //   getExercises: "exercises/getExercises",
     // }),
@@ -136,7 +136,7 @@ export default {
     selectedExerciseId: function() {
       console.log(this.selectedExerciseId);
       this.$emit("update", this.selectedExerciseId);
-    },
-  },
+    }
+  }
 };
 </script>

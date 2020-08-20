@@ -97,7 +97,7 @@ import {
   ListboxLabel,
   ListboxButton,
   ListboxList,
-  ListboxOption,
+  ListboxOption
 } from "@tailwindui/vue";
 
 export default {
@@ -107,27 +107,27 @@ export default {
     ListboxLabel,
     ListboxButton,
     ListboxList,
-    ListboxOption,
+    ListboxOption
   },
   data() {
     return {
       languages: [
         { name: "German", icon: "de" },
         { name: "French", icon: "fr" },
-        { name: "English", icon: "gb" },
+        { name: "English", icon: "gb" }
       ],
-      selectedLanguage: "",
+      selectedLanguage: ""
     };
   },
   computed: {
     selectedLanguages() {
-      return this.languages.find((language) => this.languages === language);
+      return this.languages.find(language => this.languages === language);
     },
     getCountryIcon() {
       return this.languages.find(
-        (language) => this.selectedLanguage.name === language.name
+        language => this.selectedLanguage.name === language.name
       ).icon;
-    },
-  },
+    }
+  }
 };
 </script>

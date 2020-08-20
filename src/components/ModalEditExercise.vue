@@ -155,18 +155,18 @@ export default {
       reps: "",
       rir: "",
       day: "",
-      index: "",
+      index: ""
     };
   },
   computed: {
     ...mapGetters({
       getMuscles: "muscles/getMuscles",
-      getExercises: "exercises/getExercises",
-    }),
+      getExercises: "exercises/getExercises"
+    })
   },
   methods: {
     ...mapActions({
-      updateExercisesInProgramDay: "programdays/updateExercisesInProgramDay",
+      updateExercisesInProgramDay: "programdays/updateExercisesInProgramDay"
     }),
     hide() {
       this.$modal.hide("modal-edit-exercise");
@@ -187,7 +187,7 @@ export default {
         createdAt: event.params.createdAt,
         updatedAt: event.params.updatedAt,
         weekId: event.params.weekId,
-        exercises: event.params.exercises,
+        exercises: event.params.exercises
       };
       this.index = event.params.index;
       this.weight = this.day.exercises[this.index].weight_used;
@@ -210,7 +210,7 @@ export default {
     },
     async editExerciseFromProgramDay() {
       const muscle_group = this.getExercises.find(
-        (exercise) => exercise.id === this.exercise
+        exercise => exercise.id === this.exercise
       ).muscle_id;
       const exercise = {
         exercise: this.exercise,
@@ -218,7 +218,7 @@ export default {
         reps: Number(this.reps),
         sets: Number(this.sets),
         weight_used: Number(this.weight),
-        rir: Number(this.rir),
+        rir: Number(this.rir)
       };
       Vue.set(this.day.exercises, this.index, exercise);
       try {
@@ -234,8 +234,8 @@ export default {
       this.exercise = "";
       this.index = "";
       this.$modal.hide("modal-edit-exercise");
-    },
-  },
+    }
+  }
 };
 </script>
 

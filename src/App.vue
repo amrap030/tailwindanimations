@@ -14,12 +14,12 @@ export default {
   components: { ModalIdle },
   computed: {
     ...mapGetters({
-      getDark: "getDark",
+      getDark: "getDark"
     }),
     isIdle() {
       return this.$store.state.idleVue.isIdle;
-    },
-  },
+    }
+  }
 };
 </script>
 

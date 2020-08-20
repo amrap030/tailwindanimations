@@ -18,7 +18,7 @@ const wsAdress =
     : "ws://192.168.178.24:8081/v1/graphql";
 
 const httpLink = new HttpLink({
-  uri: httpAdress,
+  uri: httpAdress
 });
 
 // let token = localStorage.getItem("apollo-token");
@@ -39,9 +39,9 @@ const authLink = setContext(async (_, { headers, ...context }) => {
   return {
     headers: {
       ...headers,
-      ...(token ? { authorization: token } : {}),
+      ...(token ? { authorization: token } : {})
     },
-    ...context,
+    ...context
   };
 });
 
@@ -59,7 +59,7 @@ const wsLink =
         return Authorization
           ? { Authorization, headers: { Authorization } }
           : {};
-      },
+      }
     })
   );
 
@@ -82,5 +82,5 @@ const link = split(
 export const apolloClient = new ApolloClient({
   link,
   cache: new InMemoryCache(),
-  connectToDevTools: true,
+  connectToDevTools: true
 });

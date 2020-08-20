@@ -139,12 +139,12 @@ export default {
   data() {
     return {
       muscle_id: "",
-      exerciseName: "",
+      exerciseName: ""
     };
   },
   methods: {
     ...mapActions({
-      addExerciseToList: "exercises/addExerciseToList",
+      addExerciseToList: "exercises/addExerciseToList"
     }),
     hide() {
       this.$modal.hide("modal-add-exercise-to-list");
@@ -161,7 +161,7 @@ export default {
       try {
         await this.addExerciseToList({
           muscle_id: this.muscle_id,
-          name: this.exerciseName,
+          name: this.exerciseName
         });
       } catch (error) {
         console.log(error);
@@ -169,8 +169,8 @@ export default {
       this.$modal.hide("modal-add-exercise-to-list");
       this.muscle_id = "";
       this.exerciseName = "";
-    },
-  },
+    }
+  }
 };
 </script>
 

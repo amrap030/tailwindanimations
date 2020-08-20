@@ -24,8 +24,8 @@ export default {
   name: "AddExerciseCard",
   props: {
     muscle_group: {
-      type: String,
-    },
+      type: String
+    }
   },
   methods: {
     show() {
@@ -33,8 +33,8 @@ export default {
     },
     hide() {
       this.$modal.hide("modal-add-exercise-to-list");
-    },
-  },
+    }
+  }
 };
 </script>
 

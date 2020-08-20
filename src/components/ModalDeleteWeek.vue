@@ -116,23 +116,23 @@ export default {
   components: {},
   data() {
     return {
-      programweek: "",
+      programweek: ""
     };
   },
   computed: {
     ...mapGetters({
       getActiveProgram: "programs/getActiveProgram",
       getActiveProgramWeek: "programweeks/getActiveProgramWeek",
-      getWeeks: "programweeks/getWeeks",
-    }),
+      getWeeks: "programweeks/getWeeks"
+    })
   },
   methods: {
     ...mapActions({
-      deleteProgramWeek: "programweeks/deleteProgramWeek",
+      deleteProgramWeek: "programweeks/deleteProgramWeek"
     }),
     setActiveWeek(programId) {
       const week = this.getWeeks.filter(
-        (week) => week.programId === programId
+        week => week.programId === programId
       )[0];
       if (week) {
         this.$store.commit("programweeks/SET_ACTIVE_PROGRAMWEEK", week.id);
@@ -162,8 +162,8 @@ export default {
     },
     beforeOpen(event) {
       this.programweek = event.params;
-    },
-  },
+    }
+  }
 };
 </script>
 

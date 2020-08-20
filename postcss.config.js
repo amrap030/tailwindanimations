@@ -3,7 +3,7 @@ const purgecss = require("@fullhuman/postcss-purgecss")({
   content: [
     "./src/**/*.html",
     "./src/**/*.vue",
-    "./src/**/*.jsx",
+    "./src/**/*.jsx"
     // etc.
   ],
   whitelist: [
@@ -27,11 +27,11 @@ const purgecss = require("@fullhuman/postcss-purgecss")({
     "bg-indigo-100",
     "tooltip",
     "tooltip-arrow",
-    "tooltip-inner",
+    "tooltip-inner"
   ],
 
   // This is the function used to extract class names from your templates
-  defaultExtractor: (content) => {
+  defaultExtractor: content => {
     // Capture as liberally as possible, including things like `h-(screen-1.5)`
     const broadMatches = content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || [];
 
@@ -39,7 +39,7 @@ const purgecss = require("@fullhuman/postcss-purgecss")({
     const innerMatches = content.match(/[^<>"'`\s.()]*[^<>"'`\s.():]/g) || [];
 
     return broadMatches.concat(innerMatches);
-  },
+  }
 });
 
 module.exports = {
@@ -47,7 +47,7 @@ module.exports = {
     // ...
     require("tailwindcss"),
     require("autoprefixer"),
-    ...(process.env.NODE_ENV === "production" ? [] : []),
+    ...(process.env.NODE_ENV === "production" ? [] : [])
     // ...
-  ],
+  ]
 };
