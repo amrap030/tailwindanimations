@@ -38,14 +38,10 @@
               stroke-linejoin="round"
               class="absolute w-4 h-4 leading-tight"
             >
-              <path
-                d="M10 3H3v7h7V3zM21 3h-7v7h7V3zM21 14h-7v7h7v-7zM10 14H3v7h7v-7z"
-              />
+              <path d="M10 3H3v7h7V3zM21 3h-7v7h7V3zM21 14h-7v7h7v-7zM10 14H3v7h7v-7z" />
             </svg>
 
-            <span class="pl-8 overflow-hidden text-sm font-medium"
-              >Dashboard</span
-            >
+            <span class="pl-8 overflow-hidden text-sm font-medium">Dashboard</span>
           </router-link>
         </div>
 
@@ -81,9 +77,7 @@
               <path d="M18.5 2.5a2.121 2.121 0 113 3L12 15l-4 1 1-4 9.5-9.5z" />
             </svg>
 
-            <span class="pl-8 overflow-hidden text-sm font-medium"
-              >Training</span
-            >
+            <span class="pl-8 overflow-hidden text-sm font-medium">Training</span>
           </router-link>
         </div>
         <div class="h-10 mt-2 -mx-3">
@@ -120,9 +114,7 @@
               <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
             </svg>
 
-            <span class="pl-8 overflow-hidden text-sm font-medium"
-              >Exercises</span
-            >
+            <span class="pl-8 overflow-hidden text-sm font-medium">Exercises</span>
           </router-link>
         </div>
         <div class="h-10 mt-2 -mx-3">
@@ -158,9 +150,7 @@
               />
             </svg>
 
-            <span class="pl-8 overflow-hidden text-sm font-medium"
-              >Calendar</span
-            >
+            <span class="pl-8 overflow-hidden text-sm font-medium">Calendar</span>
           </router-link>
         </div>
         <div class="h-10 mt-2 -mx-3">
@@ -191,17 +181,11 @@
               stroke-linejoin="round"
               class="absolute w-4 h-4"
             >
-              <path
-                d="M18 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2z"
-              />
-              <path
-                d="M15 9H9v6h6V9zM9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"
-              />
+              <path d="M18 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2z" />
+              <path d="M15 9H9v6h6V9zM9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3" />
             </svg>
 
-            <span class="pl-8 overflow-hidden text-sm font-medium"
-              >Calculator</span
-            >
+            <span class="pl-8 overflow-hidden text-sm font-medium">Calculator</span>
           </router-link>
         </div>
       </div>
@@ -240,9 +224,7 @@
               />
             </svg>
 
-            <span class="pl-8 overflow-hidden text-sm font-medium"
-              >Settings</span
-            >
+            <span class="pl-8 overflow-hidden text-sm font-medium">Settings</span>
           </router-link>
         </div>
         <div class="h-10 mt-2 -mx-3">
@@ -277,10 +259,7 @@
               <path d="M18.36 6.64a9 9 0 11-12.73 0M12 2v10" />
             </svg>
 
-            <span
-              class="pl-8 overflow-hidden text-sm font-medium whitespace-no-wrap"
-              >Sign out</span
-            >
+            <span class="pl-8 overflow-hidden text-sm font-medium whitespace-no-wrap">Sign out</span>
           </button>
         </div>
       </div>
@@ -329,27 +308,12 @@ export default {
     toggleSidebar() {
       this.sideBarOpen = false;
       this.$root.$emit("bgclick", false);
-      // if (this.windowWidth > 640) {
-      //   this.mobileActive = false;
-      // }
     }
   },
   mounted() {
     this.$root.$on("eventing", data => {
       this.sideBarOpen = data;
     });
-    // window.onresize = () => {
-    //   if (this.windowWidth >= 640) {
-    //     this.mobileActive = false;
-    //   } else {
-    //     this.mobileActive = true;
-    //     this.sideBarOpen = false;
-    //   }
-    // };
-    // if (this.windowWidth < 640) {
-    //   this.mobileActive = true;
-    //   this.sideBarOpen = false;
-    // }
   },
   created() {
     if (window.innerWidth < 640) {

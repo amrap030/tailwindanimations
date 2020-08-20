@@ -1,13 +1,5 @@
 <template>
-  <div>
-    <!-- <div class="flex flex-col h-screen">
-      <StickyHeader />
-      <div
-        class="flex flex-1 min-w-0 overflow-hidden transition duration-300 ease-in-out bg-gray-50 dark:bg-gray-900"
-      >
-    <SideBar />
-
-    <div class="w-full min-h-0">-->
+  <div class="h-full">
     <main class="flex max-h-full p-6 overflow-hidden">
       <!-- EMPTY workout section
           <div class="my-auto">
@@ -58,28 +50,7 @@
                     ? 'text-purple-700 hover:text-purple-700'
                     : ''
                 "
-              >
-                {{ program.name }}
-                <!-- <div
-                          class="absolute inset-0 transform translate-y-4"
-                          :class="
-                            program.id === getActiveProgram.id
-                              ? 'border-purple-700 border-b-2 text-purple-700'
-                              : ''
-                          "
-                ></div>-->
-              </button>
-
-              <!-- <button
-                        class="px-3 py-4 text-sm font-semibold text-gray-500 whitespace-no-wrap hover:text-gray-900"
-                      >
-                        Push/Pull
-                      </button>
-                      <button
-                        class="px-3 py-4 text-sm font-semibold text-gray-500 whitespace-no-wrap hover:text-gray-900"
-                      >
-                        5er Split
-              </button>-->
+              >{{ program.name }}</button>
             </nav>
           </div>
           <div>
@@ -178,7 +149,6 @@
                   />
                 </svg>
               </button>
-
               <button
                 class="text-gray-700 bg-gray-200 rounded-full dark:text-gray-100 dark:bg-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none"
                 v-ripple
@@ -209,116 +179,11 @@
                   />
                 </svg>
               </button>
-              <!-- <button
-                      class="text-gray-700 bg-gray-200 rounded-full dark:text-gray-100 dark:bg-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none"
-                      v-ripple
-                      v-tooltip="{
-                        content: 'Print',
-                        popperOptions: {
-                          modifiers: {
-                            preventOverflow: {
-                              boundariesElement: 'offsetParent',
-                            },
-                          },
-                        },
-                        placement: 'top',
-                        offset: 10,
-                      }"
-                    >
-                      <svg
-                        class="overflow-visible h-10 w-10 px-2.5 py-2.5 transition ease-in-out duration-150"
-                        fill="none"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"
-                        ></path>
-                      </svg>
-              </button>-->
             </div>
           </div>
         </div>
         <vuescroll :ops="ops">
           <div class="h-full p-8">
-            <div>
-              <div>
-                <!-- <span
-                        class="text-xl font-bold leading-tight text-gray-700 dark:text-gray-100"
-                        >{{ getActiveProgram.name }}</span
-                >-->
-                <!-- <div class="flex mt-4">
-                        <div
-                          class="text-gray-700 rounded-full hover:text-gray-900 focus:outline-none"
-                        >
-                          <div class="flex items-center mr-2">
-                            <svg
-                              class="w-10 h-10 px-2 py-2 transition duration-150 ease-in-out bg-white rounded-full shadow"
-                              fill="none"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
-                              ></path>
-                              <path
-                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                              ></path>
-                            </svg>
-                            <div class="ml-4">
-                              <div
-                                class="text-xs font-bold leading-tight text-gray-500 uppercase"
-                              >
-                                Start Date
-                              </div>
-                              <div
-                                class="text-xs font-bold leading-tight text-gray-900"
-                              >
-                                2020-06-01
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div
-                          class="ml-2 text-gray-700 hover:text-gray-900 focus:outline-none"
-                        >
-                          <div class="flex items-center mr-2">
-                            <svg
-                              class="w-10 h-10 px-2 py-2 transition duration-150 ease-in-out bg-white rounded-full shadow"
-                              fill="none"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                              ></path>
-                            </svg>
-                            <div class="ml-4">
-                              <div
-                                class="text-xs font-bold leading-tight text-gray-500 uppercase"
-                              >
-                                End Date
-                              </div>
-                              <div
-                                class="text-xs font-bold leading-tight text-gray-900"
-                              >
-                                2020-06-07
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                </div>-->
-              </div>
-            </div>
             <div class="mb-14">
               <TrainingDayCard
                 v-for="(programday, index) in filterActiveWeekDays"
@@ -331,8 +196,6 @@
           </div>
         </vuescroll>
       </div>
-
-      <!-- <div class="hidden h-full overflow-hidden sm:flex sm:flex-col"> -->
       <div class="hidden max-h-full mt-2 overflow-hidden sm:flex sm:flex-col">
         <vuescroll :ops="ops">
           <div class="pb-2 pr-2">
@@ -348,11 +211,7 @@
           </div>
         </vuescroll>
       </div>
-      <!-- </div> -->
     </main>
-    <!-- </div>
-      </div>
-    </div>-->
     <ModalEditWeek />
     <ModalDeleteWeek />
     <ModalAddExercise />
@@ -363,17 +222,14 @@
 </template>
 
 <script>
-//import SideBar from "@/components/SideBar";
-//import StickyHeader from "@/components/StickyHeader";
+import * as firebase from "firebase/app";
+import "firebase/auth";
 import WeekCard from "@/components/WeekCard";
 import AddWeekCard from "@/components/AddWeekCard";
 import ChooseWorkout from "@/components/ChooseWorkout";
 import TrainingDayCard from "@/components/TrainingDayCard";
 import AddDayCard from "@/components/AddDayCard";
 import vuescroll from "vuescroll";
-import { mapGetters, mapActions } from "vuex";
-import * as firebase from "firebase/app";
-import "firebase/auth";
 import ModalEditWeek from "@/components/ModalEditWeek.vue";
 import ModalDeleteWeek from "@/components/ModalDeleteWeek.vue";
 import ModalDeleteProgram from "@/components/ModalDeleteProgram.vue";
@@ -381,13 +237,12 @@ import ModalAddExercise from "@/components/ModalAddExercise.vue";
 import ModalEditExercise from "@/components/ModalEditExercise.vue";
 import ModalEditProgram from "@/components/ModalEditProgram.vue";
 import { apolloClient } from "../apollo-client";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "Training",
   components: {
     TrainingDayCard,
-    //SideBar,
-    //StickyHeader,
     WeekCard,
     AddWeekCard,
     AddDayCard,

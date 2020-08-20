@@ -1,11 +1,11 @@
 <template>
   <div id="app" :class="{ 'theme-dark': getDark }">
     <div class="flex flex-col h-screen">
-      <StickyHeader v-if="this.$store.getters.user.loggedIn" />
+      <StickyHeader v-if="this.$route.path !== '/'" />
       <div
         class="flex flex-1 min-w-0 overflow-hidden transition duration-300 ease-in-out bg-gray-50 dark:bg-gray-900"
       >
-        <SideBar v-if="this.$store.getters.user.loggedIn" />
+        <SideBar v-if="this.$route.path !== '/'" />
         <div class="w-full min-h-0">
           <router-view />
         </div>

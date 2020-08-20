@@ -1,11 +1,5 @@
 <template>
-  <div>
-    <!-- <div class="flex flex-col h-screen">
-      <StickyHeader />
-      <div class="flex flex-1 min-w-0 overflow-hidden bg-gray-100">
-        <SideBar />
-
-    <div class="w-full min-h-0">-->
+  <div class="h-full">
     <main class="flex h-full p-8 overflow-hidden">
       <div class="w-full bg-white dark:bg-gray-900 sm:rounded-lg sm:shadow">
         <vuescroll :ops="ops">
@@ -29,9 +23,6 @@
                 <div>Name</div>
                 <div>Muscle Group</div>
                 <div>Like</div>
-                <!-- <div>
-                        Personal Best
-                </div>-->
                 <div class="text-right">Actions</div>
               </div>
               <div
@@ -86,9 +77,6 @@
                     </svg>
                   </button>
                 </div>
-                <!-- <div>
-                        150 KG
-                </div>-->
                 <div>
                   <div class="flex items-center justify-end text-gray-500">
                     <button
@@ -146,17 +134,12 @@
         </vuescroll>
       </div>
     </main>
-    <!-- </div>
-      </div>
-    </div>-->
     <ModalAddExerciseToList />
     <ModalEditExerciseFromList />
   </div>
 </template>
 
 <script>
-//import SideBar from "@/components/SideBar";
-//import StickyHeader from "@/components/StickyHeader";
 import ModalAddExerciseToList from "@/components/ModalAddExerciseToList";
 import ModalEditExerciseFromList from "@/components/ModalEditExerciseFromList";
 import AddExerciseCard from "@/components/AddExerciseCard";
@@ -166,8 +149,6 @@ import vuescroll from "vuescroll";
 export default {
   name: "Exercises",
   components: {
-    //SideBar,
-    //StickyHeader,
     AddExerciseCard,
     vuescroll,
     ModalAddExerciseToList,
