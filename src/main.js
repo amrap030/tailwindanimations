@@ -15,7 +15,6 @@ import "./registerServiceWorker";
 import * as TastyBurgerButton from "vue-tasty-burgers";
 import IdleVue from "idle-vue";
 import CountryFlag from "vue-country-flag";
-
 Vue.component("country-flag", CountryFlag);
 
 const eventsHub = new Vue();

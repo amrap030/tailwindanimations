@@ -65,7 +65,7 @@
                 <svg
                   class="w-5 h-5 text-gray-500"
                   :class="[
-                    this.passwordFieldType == 'password' ? 'block' : 'hidden'
+                    this.passwordFieldType == 'password' ? 'block' : 'hidden',
                   ]"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -83,7 +83,7 @@
                 <svg
                   class="w-5 h-5 text-gray-500"
                   :class="[
-                    this.passwordFieldType == 'text' ? 'block' : 'hidden'
+                    this.passwordFieldType == 'text' ? 'block' : 'hidden',
                   ]"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -125,7 +125,7 @@
         <div class="mt-6">
           <button
             type="submit"
-            class="relative flex justify-center w-full px-4 py-2 text-sm font-medium leading-5 text-white transition duration-150 ease-in-out rounded-lg bg-gradient-b-red-blue group hover:bg-gradient-b-red-green-blue focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
+            class="relative flex justify-center w-full px-4 py-2 text-sm font-medium leading-5 text-white transition duration-150 ease-in-out bg-purple-700 rounded-lg focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
           >
             Sign in
           </button>
@@ -153,7 +153,7 @@ export default {
     return {
       email: "",
       password: "",
-      passwordFieldType: "password"
+      passwordFieldType: "password",
     };
   },
   beforeCreate: function() {
@@ -173,8 +173,8 @@ export default {
       } catch (error) {
         console.log(error);
       }
-    }
-  }
+    },
+  },
   // validations: {
   //   email: { required, email },
   //   password: { required, between: between(20, 30) },
