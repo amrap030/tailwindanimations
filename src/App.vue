@@ -20,6 +20,38 @@ export default {
       return this.$store.state.idleVue.isIdle;
     }
   }
+  // methods: {
+  //   handleStyles() {
+  //     // Red style to the body tag for the home page
+  //     if (["/"].includes(this.$route.path))
+  //       document.body.className = "bg-purple-700";
+  //     // Pink style to the body tag for all other pages
+  //     else if (document.body.classList.contains("bg-purple-700"))
+  //       document.body.className = "bg-white";
+  //   },
+  // },
+  // // Handle styles when the app is initially loaded
+  // mounted() {
+  //   this.handleStyles();
+  // },
+  // // Handle styles when the route changes
+  // watch: {
+  //   $route() {
+  //     this.handleStyles();
+  //   },
+  // },
+  // watch: {
+  //   $route: {
+  //     handler(to, from) {
+  //       const body = document.getElementsByTagName("body")[0];
+  //       if (from !== undefined) {
+  //         body.classList.remove("page--" + from.name.toLowerCase());
+  //       }
+  //       body.classList.add("page--" + to.name.toLowerCase());
+  //     },
+  //     immediate: true,
+  //   },
+  // },
 };
 </script>
 
@@ -79,6 +111,21 @@ body.home {
   margin-bottom: 0;
 }
 
+.tooltip[x-placement^="bottom"] {
+  margin-top: 5px;
+}
+
+.tooltip[x-placement^="bottom"] .tooltip-arrow {
+  border-width: 0 5px 5px 5px;
+  border-left-color: transparent !important;
+  border-right-color: transparent !important;
+  border-top-color: transparent !important;
+  top: -5px;
+  left: calc(50% - 5px);
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .tooltip[x-placement^="right"] {
   margin-left: 5px;
 }
@@ -96,6 +143,29 @@ body.home {
 
 .tooltip[x-placement^="left"] {
   margin-right: 5px;
+}
+
+.tooltip[x-placement^="left"] .tooltip-arrow {
+  border-width: 5px 0 5px 5px;
+  border-top-color: transparent !important;
+  border-right-color: transparent !important;
+  border-bottom-color: transparent !important;
+  right: -5px;
+  top: calc(50% - 5px);
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.tooltip.popover .popover-inner {
+  background: #f9f9f9;
+  color: black;
+  padding: 24px;
+  border-radius: 5px;
+  box-shadow: 0 5px 30px rgba(black, 0.1);
+}
+
+.tooltip.popover .popover-arrow {
+  border-color: #f9f9f9;
 }
 
 .tooltip[aria-hidden="true"] {

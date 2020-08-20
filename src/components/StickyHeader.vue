@@ -94,7 +94,7 @@
                     :customStyle="{
                       height: '2.5rem !important',
                       width: '2.5rem !important',
-                      fontSize: '15px !important'
+                      fontSize: '15px !important',
                     }"
                   ></Avatar>
                   <!-- <img
@@ -180,7 +180,7 @@ export default {
       color: "white",
       activeColor: "white",
       sideBarOpen: true,
-      mobileActive: isMobileOnly
+      mobileActive: isMobileOnly,
       // color: "#384150",
       // activeColor: "#384150",
       //windowWidth: window.innerWidth,
@@ -188,8 +188,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      getDark: "getDark"
-    })
+      getDark: "getDark",
+    }),
   },
   methods: {
     toggleDropdown() {
@@ -217,20 +217,20 @@ export default {
       console.log(active);
       this.sideBarOpen = active;
       this.$root.$emit("eventing", active);
-    }
+    },
   },
   mounted() {
     // window.onresize = () => {
     //   this.windowWidth = window.innerWidth;
     // };
-    this.$root.$on("bgclick", data => {
+    this.$root.$on("bgclick", (data) => {
       this.onToggle(data);
       this.isActive = !this.isActive;
     });
     if (window.innerWidth < 640) {
       this.isActive = false;
     }
-  }
+  },
 };
 </script>
 

@@ -85,18 +85,18 @@ export default {
       weeks: null,
       days: null,
       drag: false,
-      list: ""
+      list: "",
     };
   },
   props: {
     item: {
-      required: true
-    }
+      required: true,
+    },
   },
   components: {
     ProgrammingCard,
     AddProgramExerciseCard,
-    Draggable
+    Draggable,
   },
   computed: {
     getExercises() {
@@ -107,13 +107,13 @@ export default {
         animation: 200,
         group: "description",
         disabled: false,
-        ghostClass: "ghost"
+        ghostClass: "ghost",
       };
-    }
+    },
   },
   methods: {
     ...mapActions({
-      updateExercisesInProgramDay: "programdays/updateExercisesInProgramDay"
+      updateExercisesInProgramDay: "programdays/updateExercisesInProgramDay",
     }),
     async updateExercises() {
       try {
@@ -121,8 +121,8 @@ export default {
       } catch (error) {
         console.log(error);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -18,10 +18,10 @@ const wsAdress =
     : "ws://192.168.178.24:8081/v1/graphql";
 
 const httpLink = new HttpLink({
-  uri: httpAdress
+  uri: httpAdress,
 });
 
-// let token = localStorage.getItem("apollo-token");
+//let token = localStorage.getItem("apollo-token");
 
 async function getAuth(tokenName) {
   if (typeof window !== "undefined") {
@@ -39,9 +39,9 @@ const authLink = setContext(async (_, { headers, ...context }) => {
   return {
     headers: {
       ...headers,
-      ...(token ? { authorization: token } : {})
+      ...(token ? { authorization: token } : {}),
     },
-    ...context
+    ...context,
   };
 });
 
@@ -54,13 +54,31 @@ const wsLink =
       reconnect: true,
       timeout: 30000,
       lazy: true,
+      // connectionParams: async () => {
+      //   const token = await getAuth("apollo-token");
+      //   return Authorization
+      //     ? { Authorization, headers: { Authorization } }
+      //     : {};
+      // },
       connectionParams: async () => {
         const Authorization = await getAuth("apollo-token");
         return Authorization
           ? { Authorization, headers: { Authorization } }
           : {};
-      }
+      },
     })
+    // {
+    // uri: "ws://localhost:8081/v1/graphql",
+    // options: {
+    //   reconnect: true,
+    //   timeout: 30000,
+    //   connectionParams: () => {
+    //     const Authorization = getAuth("apollo-token");
+    //     return Authorization
+    //       ? { Authorization, headers: { Authorization } }
+    //       : {};
+    //   },
+    //},
   );
 
 //using the ability to split links, you can send data to each link
@@ -82,5 +100,5 @@ const link = split(
 export const apolloClient = new ApolloClient({
   link,
   cache: new InMemoryCache(),
-  connectToDevTools: true
+  connectToDevTools: true,
 });

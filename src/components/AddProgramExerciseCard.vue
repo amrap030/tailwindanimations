@@ -24,8 +24,8 @@ export default {
   name: "AddProgramExerciseCard",
   props: {
     day: {
-      type: Object
-    }
+      type: Object,
+    },
   },
   methods: {
     show() {
@@ -33,8 +33,8 @@ export default {
     },
     hide() {
       this.$modal.hide("modal-add-exercise");
-    }
-  }
+    },
+  },
 };
 </script>
 

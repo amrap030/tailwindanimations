@@ -32,8 +32,8 @@ export default {
   name: "AddDayCard",
   props: {
     programdays: {
-      type: Array
-    }
+      type: Array,
+    },
   },
   computed: {
     ...mapGetters({
@@ -41,25 +41,25 @@ export default {
       getProgramById: "programs/getProgramById",
       getPrograms: "programs/getPrograms",
       getActiveProgram: "programs/getActiveProgram",
-      getActiveProgramWeek: "programweeks/getActiveProgramWeek"
+      getActiveProgramWeek: "programweeks/getActiveProgramWeek",
     }),
     filterActiveDays() {
       if (this.getActiveProgramWeek) {
-        return this.programdays.filter(programday => {
+        return this.programdays.filter((programday) => {
           return programday.weekId === this.getActiveProgramWeek.id;
         });
       }
       return [];
-    }
+    },
   },
   methods: {
     ...mapActions({
-      addBlankProgramDay: "programdays/addBlankProgramDay"
+      addBlankProgramDay: "programdays/addBlankProgramDay",
     }),
     addBlank() {
       this.addBlankProgramDay(this.getActiveProgramWeek.id);
-    }
-  }
+    },
+  },
 };
 </script>
 

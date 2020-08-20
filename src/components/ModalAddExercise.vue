@@ -474,13 +474,13 @@ export default {
       shoulderID: "",
       filterArray: [],
       filterTempArray: [],
-      filterExercises: []
+      filterExercises: [],
     };
   },
   computed: {
     ...mapGetters({
       getMuscles: "muscles/getMuscles",
-      getExercises: "exercises/getExercises"
+      getExercises: "exercises/getExercises",
     }),
     filterTempExercises() {
       if (this.filterArray.length === 0) {
@@ -492,7 +492,7 @@ export default {
       } else {
         return this.exercises
           .filter(
-            exercise =>
+            (exercise) =>
               exercise.muscle_id === this.chestID ||
               exercise.muscle_id === this.bicepsID ||
               exercise.muscle_id === this.legsID ||
@@ -506,11 +506,11 @@ export default {
             return exerciseA < exerciseB ? -1 : exerciseA > exerciseB ? 1 : 0;
           });
       }
-    }
+    },
   },
   methods: {
     ...mapActions({
-      updateExercisesInProgramDay: "programdays/updateExercisesInProgramDay"
+      updateExercisesInProgramDay: "programdays/updateExercisesInProgramDay",
     }),
     toggleDropdown() {
       this.isOpen = !this.isOpen;
@@ -541,7 +541,7 @@ export default {
     },
     async addExerciseToProgramDay() {
       const muscle_group = this.getExercises.find(
-        exercise => exercise.id === this.exercise
+        (exercise) => exercise.id === this.exercise
       ).muscle_id;
       console.log(muscle_group);
       const exercise = {
@@ -550,7 +550,7 @@ export default {
         reps: Number(this.reps),
         sets: Number(this.sets),
         weight_used: Number(this.weight),
-        rir: Number(this.rir)
+        rir: Number(this.rir),
       };
       this.day.exercises.push(exercise);
       try {
@@ -566,19 +566,19 @@ export default {
       this.$modal.hide("modal-add-exercise");
     },
     getMuscleName(muscle) {
-      return this.getMuscles.find(muscleGroup => muscle === muscleGroup.id)
+      return this.getMuscles.find((muscleGroup) => muscle === muscleGroup.id)
         .name;
     },
     toggleChest(event) {
       this.chestChecked = event.target.checked;
       if (this.chestChecked) {
         this.chestID = this.getMuscles.find(
-          muscle => muscle.name === "Chest"
+          (muscle) => muscle.name === "Chest"
         ).id;
         this.filterArray.push(this.chestID);
       } else {
         this.filterArray = this.filterArray.filter(
-          muscleName => muscleName !== this.chestID
+          (muscleName) => muscleName !== this.chestID
         );
         this.chestID = "";
       }
@@ -586,11 +586,13 @@ export default {
     toggleBack(event) {
       this.backChecked = event.target.checked;
       if (this.backChecked) {
-        this.backID = this.getMuscles.find(muscle => muscle.name === "Back").id;
+        this.backID = this.getMuscles.find(
+          (muscle) => muscle.name === "Back"
+        ).id;
         this.filterArray.push(this.backID);
       } else {
         this.filterArray = this.filterArray.filter(
-          muscleName => muscleName !== this.backID
+          (muscleName) => muscleName !== this.backID
         );
         this.backID = "";
       }
@@ -599,12 +601,12 @@ export default {
       this.bicepsChecked = event.target.checked;
       if (this.bicepsChecked) {
         this.bicepsID = this.getMuscles.find(
-          muscle => muscle.name === "Biceps"
+          (muscle) => muscle.name === "Biceps"
         ).id;
         this.filterArray.push(this.bicepsID);
       } else {
         this.filterArray = this.filterArray.filter(
-          muscleName => muscleName !== this.bicepsID
+          (muscleName) => muscleName !== this.bicepsID
         );
         this.bicepsID = "";
       }
@@ -613,12 +615,12 @@ export default {
       this.tricepsChecked = event.target.checked;
       if (this.tricepsChecked) {
         this.tricepsID = this.getMuscles.find(
-          muscle => muscle.name === "Triceps"
+          (muscle) => muscle.name === "Triceps"
         ).id;
         this.filterArray.push(this.tricepsID);
       } else {
         this.filterArray = this.filterArray.filter(
-          muscleName => muscleName !== this.tricepsID
+          (muscleName) => muscleName !== this.tricepsID
         );
         this.tricepsID = "";
       }
@@ -626,11 +628,13 @@ export default {
     toggleLegs(event) {
       this.legsChecked = event.target.checked;
       if (this.legsChecked) {
-        this.legsID = this.getMuscles.find(muscle => muscle.name === "Legs").id;
+        this.legsID = this.getMuscles.find(
+          (muscle) => muscle.name === "Legs"
+        ).id;
         this.filterArray.push(this.legsID);
       } else {
         this.filterArray = this.filterArray.filter(
-          muscleName => muscleName !== this.legsID
+          (muscleName) => muscleName !== this.legsID
         );
         this.legsID = "";
       }
@@ -639,12 +643,12 @@ export default {
       this.shoulderChecked = event.target.checked;
       if (this.shoulderChecked) {
         this.shoulderID = this.getMuscles.find(
-          muscle => muscle.name === "Shoulder"
+          (muscle) => muscle.name === "Shoulder"
         ).id;
         this.filterArray.push(this.shoulderID);
       } else {
         this.filterArray = this.filterArray.filter(
-          muscleName => muscleName !== this.shoulderID
+          (muscleName) => muscleName !== this.shoulderID
         );
         this.shoulderID = "";
       }
@@ -656,50 +660,52 @@ export default {
     },
     removeFilter(muscle) {
       if (
-        this.getMuscles.find(muscleName => muscleName.id === muscle).name ===
+        this.getMuscles.find((muscleName) => muscleName.id === muscle).name ===
         "Chest"
       ) {
         this.chestChecked = false;
         this.chestID = "";
       }
       if (
-        this.getMuscles.find(muscleName => muscleName.id === muscle).name ===
+        this.getMuscles.find((muscleName) => muscleName.id === muscle).name ===
         "Biceps"
       ) {
         this.bicepsChecked = false;
         this.bicepsID = "";
       }
       if (
-        this.getMuscles.find(muscleName => muscleName.id === muscle).name ===
+        this.getMuscles.find((muscleName) => muscleName.id === muscle).name ===
         "Back"
       ) {
         this.backChecked = false;
         this.backID = "";
       }
       if (
-        this.getMuscles.find(muscleName => muscleName.id === muscle).name ===
+        this.getMuscles.find((muscleName) => muscleName.id === muscle).name ===
         "Triceps"
       ) {
         this.tricepsChecked = false;
         this.tricepsID = "";
       }
       if (
-        this.getMuscles.find(muscleName => muscleName.id === muscle).name ===
+        this.getMuscles.find((muscleName) => muscleName.id === muscle).name ===
         "Shoulder"
       ) {
         this.shoulderChecked = false;
         this.shoulderID = "";
       }
       if (
-        this.getMuscles.find(muscleName => muscleName.id === muscle).name ===
+        this.getMuscles.find((muscleName) => muscleName.id === muscle).name ===
         "Legs"
       ) {
         this.legsChecked = false;
         this.legsID = "";
       }
-      this.filterArray = this.filterArray.filter(element => element !== muscle);
+      this.filterArray = this.filterArray.filter(
+        (element) => element !== muscle
+      );
       this.filterTempArray = this.filterArray.filter(
-        element => element !== muscle
+        (element) => element !== muscle
       );
       this.filterExercises = this.filterTempExercises;
     },
@@ -720,14 +726,14 @@ export default {
       this.tricepsChecked = false;
       this.legsChecked = false;
       this.shoulderChecked = false;
-    }
+    },
   },
   created() {
-    this.getExercises.forEach(element => {
+    this.getExercises.forEach((element) => {
       this.exercises.push(element);
     });
     this.filterExercises = this.exercises;
-  }
+  },
 };
 </script>
 

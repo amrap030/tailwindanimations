@@ -19,7 +19,7 @@ import "firebase/auth";
 export default {
   data() {
     return {
-      time: 10000
+      time: 10000,
     };
   },
   methods: {
@@ -31,7 +31,7 @@ export default {
       } catch (err) {
         console.log(err);
       }
-    }
+    },
   },
   created() {
     let timerId = setInterval(() => {
@@ -43,7 +43,7 @@ export default {
         this.signOut();
       }
     }, 1000);
-  }
+  },
 };
 </script>
 

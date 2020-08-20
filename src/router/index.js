@@ -11,16 +11,16 @@ const routes = [
     path: "*",
     redirect: "/",
     meta: {
-      hideForAuth: true
-    }
+      hideForAuth: true,
+    },
   },
   {
     path: "/",
     name: "Home",
     component: Home,
     meta: {
-      hideForAuth: true
-    }
+      hideForAuth: true,
+    },
   },
   {
     path: "/training",
@@ -30,7 +30,7 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "training" */ "../views/Training.vue")
+      import(/* webpackChunkName: "training" */ "../views/Training.vue"),
   },
   {
     path: "/dashboard",
@@ -40,7 +40,7 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "dashboard" */ "../views/Dashboard.vue")
+      import(/* webpackChunkName: "dashboard" */ "../views/Dashboard.vue"),
   },
   {
     path: "/exercises",
@@ -50,7 +50,7 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "exercises" */ "../views/Exercises.vue")
+      import(/* webpackChunkName: "exercises" */ "../views/Exercises.vue"),
   },
   {
     path: "/calendar",
@@ -60,7 +60,7 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "calendar" */ "../views/Calendar.vue")
+      import(/* webpackChunkName: "calendar" */ "../views/Calendar.vue"),
   },
   {
     path: "/calculator",
@@ -70,7 +70,7 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "calculator" */ "../views/Calculator.vue")
+      import(/* webpackChunkName: "calculator" */ "../views/Calculator.vue"),
   },
   {
     path: "/settings",
@@ -80,19 +80,19 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "settings" */ "../views/Settings.vue")
-  }
+      import(/* webpackChunkName: "settings" */ "../views/Settings.vue"),
+  },
 ];
 
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
-  routes
+  routes,
 });
 
 router.beforeEach((to, from, next) => {
-  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
-  const hideForAuth = to.matched.some(record => record.meta.hideForAuth);
+  const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
+  const hideForAuth = to.matched.some((record) => record.meta.hideForAuth);
   const isAuthenticated = firebase.auth().currentUser;
 
   if (hideForAuth && isAuthenticated) {

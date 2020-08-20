@@ -92,7 +92,7 @@ import {
   ListboxLabel,
   ListboxButton,
   ListboxList,
-  ListboxOption
+  ListboxOption,
 } from "@tailwindui/vue";
 
 export default {
@@ -102,13 +102,13 @@ export default {
     ListboxLabel,
     ListboxButton,
     ListboxList,
-    ListboxOption
+    ListboxOption,
   },
   data() {
     return {
       units: ["kg", "lbs"],
-      selectedUnit: ""
+      selectedUnit: "",
     };
-  }
+  },
 };
 </script>

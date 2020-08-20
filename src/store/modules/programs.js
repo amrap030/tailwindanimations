@@ -8,7 +8,7 @@ export default {
   namespaced: true,
   state: {
     programs: [],
-    activeProgram: {}
+    activeProgram: {},
   },
   mutations: {
     SET_PROGRAMS(state, data) {
@@ -35,7 +35,7 @@ export default {
     // },
     UPDATE_PROGRAM(state, data) {
       Vue.set(
-        state.programs.find(program => program.id === data.id),
+        state.programs.find((program) => program.id === data.id),
         "name",
         data.name
       );
@@ -45,30 +45,30 @@ export default {
     },
     DUPLICATE_PROGRAM_DB(state, data) {
       Vue.set(
-        state.programs.find(program => program.id === data.oldId),
+        state.programs.find((program) => program.id === data.oldId),
         "createdAt",
         data.createdAt
       );
       Vue.set(
-        state.programs.find(program => program.id === data.oldId),
+        state.programs.find((program) => program.id === data.oldId),
         "id",
         data.id
       );
-    }
+    },
   },
   actions: {
     async initializePrograms({ commit }, data) {
       if (data) {
         commit(
           "SET_PROGRAMS",
-          data.data.Program.map(program => ({
+          data.data.Program.map((program) => ({
             id: program.id,
             name: program.name,
             startDate: program.startDate,
             endDate: program.endDate,
             finished: program.finished,
             createdAt: program.createdAt,
-            updatedAt: program.updatedAt
+            updatedAt: program.updatedAt,
           }))
         );
       } else {
@@ -84,15 +84,15 @@ export default {
               user_id: firebase.auth().currentUser.uid,
               name: data.name,
               startDate: data.startDate,
-              endDate: data.endDate
-            }
+              endDate: data.endDate,
+            },
           })
           .then(
-            data => {
+            (data) => {
               commit("ADD_BLANK_PROGRAM", data.data.insert_Program_one);
               commit("SET_ACTIVE_PROGRAM", data.data.insert_Program_one); // Success!
             },
-            error => {
+            (error) => {
               console.log(error); // Error!
             }
           );
@@ -105,8 +105,8 @@ export default {
           mutation: require("../../graphql/updateProgramName.gql"),
           variables: {
             id: data.id,
-            name: data.name
-          }
+            name: data.name,
+          },
         });
       }
     },
@@ -120,7 +120,7 @@ export default {
           endDate: null,
           finished: false,
           createdAt: date.toISOString(),
-          updatedAt: null
+          updatedAt: null,
         };
         commit("DUPLICATE_PROGRAM", program);
       }
@@ -132,25 +132,25 @@ export default {
             mutation: require("../../graphql/duplicateProgram.gql"),
             variables: {
               user_id: firebase.auth().currentUser.uid,
-              name: data.name
-            }
+              name: data.name,
+            },
           })
-          .then(response => {
+          .then((response) => {
             const transfer = {
               oldId: data.id,
-              ...response.data.insert_Program_one
+              ...response.data.insert_Program_one,
             };
             commit("DUPLICATE_PROGRAM_DB", transfer);
           });
       }
-    }
+    },
   },
   getters: {
     getPrograms(state) {
       return state.programs;
     },
     getProgramById(state, program_id) {
-      return state.programs.find(program => {
+      return state.programs.find((program) => {
         program.id === program_id;
       });
     },
@@ -159,6 +159,6 @@ export default {
     },
     getActiveProgram(state) {
       return state.activeProgram;
-    }
-  }
+    },
+  },
 };

@@ -218,13 +218,14 @@
           <button
             class="focus:outline-none"
             :class="
-              getExercises.find(exercise => exercise.id === item.exercise).like
+              getExercises.find((exercise) => exercise.id === item.exercise)
+                .like
                 ? 'text-red-500 hover:text-gray-500'
                 : 'text-gray-500 hover:text-red-500'
             "
             @click.prevent="
               setLike(
-                getExercises.find(exercise => exercise.id === item.exercise)
+                getExercises.find((exercise) => exercise.id === item.exercise)
               )
             "
           >
@@ -264,48 +265,48 @@ export default {
   mixins: [clickaway],
   data() {
     return {
-      isOpen: false
+      isOpen: false,
     };
   },
   props: {
     day: {
-      type: Object
+      type: Object,
     },
     item: {
       type: Object,
-      required: true
+      required: true,
     },
     index: {
       type: Number,
-      required: true
-    }
+      required: true,
+    },
   },
   computed: {
     ...mapGetters({
       getMuscles: "muscles/getMuscles",
-      getExercises: "exercises/getExercises"
-    })
+      getExercises: "exercises/getExercises",
+    }),
   },
   methods: {
     ...mapActions({
       updateExerciseLike: "exercises/updateExerciseLike",
-      updateExercisesInProgramDay: "programdays/updateExercisesInProgramDay"
+      updateExercisesInProgramDay: "programdays/updateExercisesInProgramDay",
     }),
     removeExercise() {
       this.$store.commit("removeExercise", this.index);
     },
     getMuscleGroup(id) {
-      return this.getMuscles.find(muscle => {
+      return this.getMuscles.find((muscle) => {
         return muscle.id === id;
       }).name;
     },
     getMuscleColor(id) {
-      return this.getMuscles.find(muscle => {
+      return this.getMuscles.find((muscle) => {
         return muscle.id === id;
       }).color;
     },
     getExerciseName(id) {
-      return this.getExercises.find(exercise => {
+      return this.getExercises.find((exercise) => {
         return exercise.id === id;
       }).name;
     },
@@ -347,10 +348,10 @@ export default {
     editExerciseFromProgramDay() {
       this.$modal.show("modal-edit-exercise", {
         index: this.index,
-        ...this.day
+        ...this.day,
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

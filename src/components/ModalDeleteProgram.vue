@@ -115,7 +115,7 @@ export default {
   components: {},
   data() {
     return {
-      program: ""
+      program: "",
     };
   },
   methods: {
@@ -128,8 +128,8 @@ export default {
     },
     beforeOpen(event) {
       this.program = event.params;
-    }
-  }
+    },
+  },
 };
 </script>
 

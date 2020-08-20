@@ -6,7 +6,7 @@
       class="fixed z-50 flex flex-col justify-between h-full px-8 py-3 pb-3 transform bg-white shadow-xl sm:static sm:shadow-none sm:border-r sm:translate-x-0 dark:border-none sidebar"
       :class="[
         sideBarOpen ? 'w-64' : 'w-20',
-        sideBarOpen ? 'translate-x-0' : '-translate-x-64'
+        sideBarOpen ? 'translate-x-0' : '-translate-x-64',
       ]"
     >
       <div>
@@ -20,13 +20,13 @@
               popperOptions: {
                 modifiers: {
                   preventOverflow: {
-                    boundariesElement: 'offsetParent'
-                  }
-                }
+                    boundariesElement: 'offsetParent',
+                  },
+                },
               },
               classes: tooltipClasses,
               placement: 'right',
-              offset: 10
+              offset: 10,
             }"
           >
             <svg
@@ -59,13 +59,13 @@
               popperOptions: {
                 modifiers: {
                   preventOverflow: {
-                    boundariesElement: 'offsetParent'
-                  }
-                }
+                    boundariesElement: 'offsetParent',
+                  },
+                },
               },
               classes: tooltipClasses,
               placement: 'right',
-              offset: 10
+              offset: 10,
             }"
           >
             <svg
@@ -96,13 +96,13 @@
               popperOptions: {
                 modifiers: {
                   preventOverflow: {
-                    boundariesElement: 'offsetParent'
-                  }
-                }
+                    boundariesElement: 'offsetParent',
+                  },
+                },
               },
               classes: tooltipClasses,
               placement: 'right',
-              offset: 10
+              offset: 10,
             }"
           >
             <svg
@@ -135,13 +135,13 @@
               popperOptions: {
                 modifiers: {
                   preventOverflow: {
-                    boundariesElement: 'offsetParent'
-                  }
-                }
+                    boundariesElement: 'offsetParent',
+                  },
+                },
               },
               classes: tooltipClasses,
               placement: 'right',
-              offset: 10
+              offset: 10,
             }"
           >
             <svg
@@ -173,13 +173,13 @@
               popperOptions: {
                 modifiers: {
                   preventOverflow: {
-                    boundariesElement: 'offsetParent'
-                  }
-                }
+                    boundariesElement: 'offsetParent',
+                  },
+                },
               },
               classes: tooltipClasses,
               placement: 'right',
-              offset: 10
+              offset: 10,
             }"
           >
             <svg
@@ -216,13 +216,13 @@
               popperOptions: {
                 modifiers: {
                   preventOverflow: {
-                    boundariesElement: 'offsetParent'
-                  }
-                }
+                    boundariesElement: 'offsetParent',
+                  },
+                },
               },
               classes: tooltipClasses,
               placement: 'right',
-              offset: 10
+              offset: 10,
             }"
           >
             <svg
@@ -256,13 +256,13 @@
               popperOptions: {
                 modifiers: {
                   preventOverflow: {
-                    boundariesElement: 'offsetParent'
-                  }
-                }
+                    boundariesElement: 'offsetParent',
+                  },
+                },
               },
               classes: [sideBarOpen ? 'tooltip-sidebar' : 'block'],
               placement: 'right',
-              offset: 10
+              offset: 10,
             }"
           >
             <svg
@@ -303,7 +303,7 @@ export default {
   data() {
     return {
       sideBarOpen: true,
-      mobileActive: isMobileOnly
+      mobileActive: isMobileOnly,
       //windowSize: { windowWidth },
     };
   },
@@ -314,7 +314,7 @@ export default {
       } else {
         return "block";
       }
-    }
+    },
   },
   methods: {
     async signOut() {
@@ -332,10 +332,10 @@ export default {
       // if (this.windowWidth > 640) {
       //   this.mobileActive = false;
       // }
-    }
+    },
   },
   mounted() {
-    this.$root.$on("eventing", data => {
+    this.$root.$on("eventing", (data) => {
       this.sideBarOpen = data;
     });
     // window.onresize = () => {
@@ -355,7 +355,7 @@ export default {
     if (window.innerWidth < 640) {
       this.sideBarOpen = false;
     }
-  }
+  },
 };
 </script>
 

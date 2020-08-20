@@ -30,7 +30,7 @@ export default {
       name: "",
       startDate: "",
       endDate: "",
-      isOpen: false
+      isOpen: false,
     };
   },
   computed: {
@@ -38,12 +38,12 @@ export default {
       getLastProgram: "programs/getLastProgram",
       getProgramById: "programs/getProgramById",
       getPrograms: "programs/getPrograms",
-      getActiveProgram: "programs/getActiveProgram"
-    })
+      getActiveProgram: "programs/getActiveProgram",
+    }),
   },
   methods: {
     ...mapActions({
-      addProgramWeek: "programweeks/addBlankProgramWeek"
+      addProgramWeek: "programweeks/addBlankProgramWeek",
     }),
     async addWeek() {
       this.$Progress.start();
@@ -53,8 +53,8 @@ export default {
       } catch (error) {
         console.log(error);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

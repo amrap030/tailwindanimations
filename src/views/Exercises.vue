@@ -84,12 +84,12 @@
                             popperOptions: {
                               modifiers: {
                                 preventOverflow: {
-                                  boundariesElement: 'offsetParent'
-                                }
-                              }
+                                  boundariesElement: 'offsetParent',
+                                },
+                              },
                             },
                             placement: 'top',
-                            offset: 10
+                            offset: 10,
                           }"
                           @click="setLike(exercise)"
                         >
@@ -120,12 +120,12 @@
                               popperOptions: {
                                 modifiers: {
                                   preventOverflow: {
-                                    boundariesElement: 'offsetParent'
-                                  }
-                                }
+                                    boundariesElement: 'offsetParent',
+                                  },
+                                },
                               },
                               placement: 'top',
-                              offset: 10
+                              offset: 10,
                             }"
                             @click.prevent="editExerciseFromList(exercise)"
                           >
@@ -146,12 +146,12 @@
                               popperOptions: {
                                 modifiers: {
                                   preventOverflow: {
-                                    boundariesElement: 'offsetParent'
-                                  }
-                                }
+                                    boundariesElement: 'offsetParent',
+                                  },
+                                },
                               },
                               placement: 'top',
-                              offset: 10
+                              offset: 10,
                             }"
                             @click.prevent="deleteExerciseFromList(exercise)"
                           >
@@ -201,7 +201,7 @@ export default {
     AddExerciseCard,
     vuescroll,
     ModalAddExerciseToList,
-    ModalEditExerciseFromList
+    ModalEditExerciseFromList,
   },
   data() {
     return {
@@ -216,7 +216,7 @@ export default {
           scrollingY: true,
           speed: 300,
           easing: undefined,
-          verticalNativeBarPos: "right"
+          verticalNativeBarPos: "right",
         },
         rail: {},
         bar: {
@@ -229,35 +229,35 @@ export default {
           specifyBorderRadius: false,
           minSize: 0,
           size: "6px",
-          disable: false
-        }
-      }
+          disable: false,
+        },
+      },
     };
   },
   computed: {
     ...mapGetters({
       getExercises: "exercises/getExercises",
-      getMuscles: "muscles/getMuscles"
-    })
+      getMuscles: "muscles/getMuscles",
+    }),
   },
   methods: {
     ...mapActions({
       updateExerciseLike: "exercises/updateExerciseLike",
-      deleteExercise: "exercises/deleteExercise"
+      deleteExercise: "exercises/deleteExercise",
     }),
     getMuscleGroup(id) {
-      return this.getMuscles.find(muscle => {
+      return this.getMuscles.find((muscle) => {
         return muscle.id === id;
       }).name;
     },
     getMuscleColor(id) {
-      return this.getMuscles.find(muscle => {
+      return this.getMuscles.find((muscle) => {
         return muscle.id === id;
       }).color;
     },
     filterExercises(id) {
       return this.getExercises
-        .filter(exercise => {
+        .filter((exercise) => {
           return exercise.muscle_id === id;
         })
         .sort((a, b) => {
@@ -284,14 +284,14 @@ export default {
     },
     editExerciseFromList(exercise) {
       this.$modal.show("modal-edit-exercise-from-list", exercise);
-    }
+    },
   },
   created() {
     this.exercises = this.getExercises;
     this.exerciseIds = [
-      ...new Set(this.getExercises.map(exercise => exercise.muscle_id))
+      ...new Set(this.getExercises.map((exercise) => exercise.muscle_id)),
     ];
-  }
+  },
 };
 </script>
 
