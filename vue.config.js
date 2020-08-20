@@ -14,6 +14,7 @@ module.exports = {
     apollo: {
       enableMocks: false,
       enableEngine: false,
+      lintGQL: true,
     },
   },
   pwa: {
