@@ -19,3 +19,16 @@ jobs:
 
       - run: yarn install
       - run: yarn run build
+
+workflows:
+  version: 2
+
+  -deploy:
+    jobs:
+      - build-job
+    # - deploy-job:
+    #     requires:
+    #         - build-job
+    #     filters:
+    #         branches:
+    #         only: master
