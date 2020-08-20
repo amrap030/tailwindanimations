@@ -3,14 +3,14 @@
     class="mt-3 ml-6 text-gray-700 bg-white rounded-lg shadow dark:text-gray-200 dark:bg-gray-800"
   >
     <div
-      class="w-full px-4 py-3 rounded-lg cursor-pointer focus:outline-none focus:shadow-outline-purple focus:bg-purple-700 focus:text-white hover:bg-purple-700 hover:text-white"
+      class="w-full px-4 py-3 rounded-lg cursor-pointer animate-pulse focus:outline-none focus:shadow-outline-purple focus:bg-purple-700 focus:text-white hover:bg-purple-700 hover:text-white"
       v-ripple
       role="button"
       tabindex="0"
       @click.prevent="setActiveWeek(item)"
       :class="
         item.id === getActiveProgramWeek.id
-          ? 'bg-purple-700 text-white focus:outline-none focus:shadow-outline-purple focus:bg-purple-700'
+          ? 'animate-pulse bg-purple-700 text-white focus:outline-none focus:shadow-outline-purple focus:bg-purple-700'
           : ''
       "
     >
