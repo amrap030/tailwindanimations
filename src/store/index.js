@@ -57,6 +57,13 @@ const subscriptions = (store) => {
           mutation.payload
         );
         break;
+      case "programweeks/DUPLICATE_PROGRAMWEEKS_DB":
+        store.dispatch("programdays/setWeekId", mutation.payload);
+        break;
+      case "programdays/SET_WEEK_ID":
+        //console.log(mutation.payload);
+        store.dispatch("programdays/duplicateProgramDaysDB", mutation.payload);
+        break;
     }
   });
 };

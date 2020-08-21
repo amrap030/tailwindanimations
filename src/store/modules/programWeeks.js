@@ -10,13 +10,13 @@ export default {
   namespaced: true,
   state: {
     programWeeks: [],
-    activeProgramWeek: {}
+    activeProgramWeek: {},
   },
   computed: {
     ...mapGetters({
       getLastProgram: "programs/getLastProgram",
-      getActiveProgram: "programs/getActiveProgram"
-    })
+      getActiveProgram: "programs/getActiveProgram",
+    }),
   },
   mutations: {
     SET_PROGRAMWEEKS(state, data) {
@@ -26,14 +26,14 @@ export default {
       state.programWeeks.push(data);
     },
     ADD_BLANK_PROGRAMWEEK_DB(state, data) {
-      console.log(data);
+      //console.log(data);
       Vue.set(
-        state.programWeeks.find(programweek => programweek.id === data.oldId),
+        state.programWeeks.find((programweek) => programweek.id === data.oldId),
         "createdAt",
         data.createdAt
       );
       Vue.set(
-        state.programWeeks.find(programweek => programweek.id === data.oldId),
+        state.programWeeks.find((programweek) => programweek.id === data.oldId),
         "id",
         data.id
       );
@@ -42,14 +42,14 @@ export default {
       if (data === null) {
         state.activeProgramWeek = null;
       } else {
-        state.activeProgramWeek = state.programWeeks.find(programweek => {
+        state.activeProgramWeek = state.programWeeks.find((programweek) => {
           return programweek.id === data;
         });
       }
     },
     DELETE_PROGRAMWEEK(state, data) {
       state.programWeeks.splice(
-        state.programWeeks.findIndex(programweek => programweek.id === data),
+        state.programWeeks.findIndex((programweek) => programweek.id === data),
         1
       );
     },
@@ -58,23 +58,23 @@ export default {
     },
     DUPLICATE_PROGRAMWEEKS_DB(state, data) {
       Vue.set(
-        state.programWeeks.find(programweek => programweek.id === data.oldId),
+        state.programWeeks.find((programweek) => programweek.id === data.oldId),
         "createdAt",
         data.createdAt
       );
       Vue.set(
-        state.programWeeks.find(programweek => programweek.id === data.oldId),
+        state.programWeeks.find((programweek) => programweek.id === data.oldId),
         "id",
         data.id
       );
-    }
+    },
   },
   actions: {
     async initializeProgramWeeks({ commit }, data) {
       if (data) {
         commit(
           "SET_PROGRAMWEEKS",
-          data.data.ProgramWeek.map(programweek => ({
+          data.data.ProgramWeek.map((programweek) => ({
             id: programweek.id,
             startDate: programweek.startDate,
             endDate: programweek.endDate,
@@ -83,7 +83,7 @@ export default {
             name: programweek.name,
             createdAt: programweek.createdAt,
             updatedAt: programweek.updatedAt,
-            programId: programweek.programId
+            programId: programweek.programId,
           }))
         );
       } else {
@@ -94,7 +94,7 @@ export default {
       if (data) {
         const length =
           this.state.programweeks.programWeeks.filter(
-            programweek => programweek.programId === data
+            (programweek) => programweek.programId === data
           ).length + 1;
         const programweek = {
           name: `Week ${length}`,
@@ -103,7 +103,7 @@ export default {
           endDate: "2020-06-07",
           status: "Intro Week",
           finished: false,
-          id: Math.round(Math.random() * -1000000)
+          id: Math.round(Math.random() * -1000000),
         };
         commit("ADD_BLANK_PROGRAMWEEK", programweek);
         commit("SET_ACTIVE_PROGRAMWEEK", programweek.id);
@@ -137,13 +137,13 @@ export default {
               user_id: firebase.auth().currentUser.uid,
               status: data.status,
               name: data.name,
-              programId: data.programId
-            }
+              programId: data.programId,
+            },
           })
-          .then(response => {
+          .then((response) => {
             const transfer = {
               oldId: data.id,
-              ...response.data.insert_ProgramWeek_one
+              ...response.data.insert_ProgramWeek_one,
             };
             commit("ADD_BLANK_PROGRAMWEEK_DB", transfer);
             commit(
@@ -160,20 +160,21 @@ export default {
           .mutate({
             mutation: require("../../graphql/deleteProgramWeek.gql"),
             variables: {
-              id: data
-            }
+              id: data,
+            },
           })
-          .then(data => {
+          .then((data) => {
             console.log(data);
           });
       }
     },
-    async duplicateProgramWeeks({ commit, state }, data) {
+    async duplicateProgramWeeks({ commit, state, dispatch }, data) {
       if (data) {
-        console.log(state);
         state.programWeeks
-          .filter(programweek => programweek.programId === data.activeProgramId)
-          .forEach(element => {
+          .filter(
+            (programweek) => programweek.programId === data.activeProgramId
+          )
+          .forEach((element) => {
             //console.log(element);
             const date = new Date();
             const programweek = {
@@ -185,9 +186,16 @@ export default {
               endDate: null,
               startDate: null,
               status: element.status,
-              id: Math.round(Math.random() * -1000000)
+              id: Math.round(Math.random() * -1000000),
             };
             commit("DUPLICATE_PROGRAMWEEKS", programweek);
+            dispatch(
+              "programdays/duplicateProgramDays",
+              { ...element, tempId: programweek.id },
+              {
+                root: true,
+              }
+            );
           });
       }
     },
@@ -200,18 +208,18 @@ export default {
               user_id: firebase.auth().currentUser.uid,
               status: data.status,
               name: data.name,
-              programId: data.programId
-            }
+              programId: data.programId,
+            },
           })
-          .then(response => {
+          .then((response) => {
             const transfer = {
               oldId: data.id,
-              ...response.data.insert_ProgramWeek_one
+              ...response.data.insert_ProgramWeek_one,
             };
             commit("DUPLICATE_PROGRAMWEEKS_DB", transfer);
           });
       }
-    }
+    },
   },
   getters: {
     getWeeks(state) {
@@ -222,6 +230,6 @@ export default {
     },
     getActiveProgramWeek(state) {
       return state.activeProgramWeek;
-    }
-  }
+    },
+  },
 };

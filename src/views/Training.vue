@@ -302,9 +302,11 @@ export default {
       getActiveProgramWeek: "programweeks/getActiveProgramWeek"
     }),
     filterActiveProgramWeeks() {
-      return this.programweeks.filter(programweek => {
-        return programweek.programId === this.getActiveProgram.id;
-      });
+      return this.programweeks
+        .filter(programweek => {
+          return programweek.programId === this.getActiveProgram.id;
+        })
+        .sort((a, b) => a.name.split(" ")[1] - b.name.split(" ")[1]);
     },
     filterActiveWeekDays() {
       if (this.getActiveProgramWeek) {
@@ -312,7 +314,7 @@ export default {
           .filter(programday => {
             return programday.weekId === this.getActiveProgramWeek.id;
           })
-          .sort((a, b) => a.createdAt - b.createdAt);
+          .sort((a, b) => a.name.split(" ")[1] - b.name.split(" ")[1]);
         console.log(test);
         return test;
       }
@@ -335,9 +337,11 @@ export default {
     },
     setActiveProgram(program) {
       this.$store.commit("programs/SET_ACTIVE_PROGRAM", program);
-      const weeks = this.getProgramWeeks.filter(programweek => {
-        return programweek.programId === program.id;
-      });
+      const weeks = this.getProgramWeeks
+        .filter(programweek => {
+          return programweek.programId === program.id;
+        })
+        .sort((a, b) => a.name.split(" ")[1] - b.name.split(" ")[1]);
       if (weeks.length === 0) {
         this.$store.commit("programweeks/SET_ACTIVE_PROGRAMWEEK", null);
       } else {

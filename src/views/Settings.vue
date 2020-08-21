@@ -50,7 +50,7 @@
                       >Photo</label>
                       <div class="relative mt-2 rounded-md">
                         <Avatar
-                          username="amrap030"
+                          :username="this.$store.getters.user.data.email[0]"
                           :customStyle="{
                             height: '3.5rem !important',
                             width: '3.5rem !important',

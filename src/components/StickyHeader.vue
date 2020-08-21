@@ -21,9 +21,7 @@
             />
             <h1
               class="ml-4 text-2xl font-semibold leading-tight sm:ml-0 lg:ml-4 dark:text-gray-50"
-            >
-              {{ this.$route.name }}
-            </h1>
+            >{{ this.$route.name }}</h1>
           </div>
           <div class="flex">
             <button
@@ -39,9 +37,7 @@
                 stroke-linejoin="round"
                 class="w-10 h-10 px-2 py-2 overflow-visible transition duration-150 ease-in-out"
               >
-                <path
-                  d="M18 8A6 6 0 106 8c0 7-3 9-3 9h18s-3-2-3-9zM13.73 21a2 2 0 01-3.46 0"
-                />
+                <path d="M18 8A6 6 0 106 8c0 7-3 9-3 9h18s-3-2-3-9zM13.73 21a2 2 0 01-3.46 0" />
               </svg>
             </button>
             <button
@@ -90,7 +86,7 @@
                   v-on-clickaway="hideDropdown"
                 >
                   <Avatar
-                    username="amrap030"
+                    :username="this.$store.getters.user.data.email[0]"
                     :customStyle="{
                       height: '2.5rem !important',
                       width: '2.5rem !important',
@@ -101,7 +97,7 @@
                     class="object-cover w-10 h-10 rounded-full"
                     src="https://images.unsplash.com/photo-1586297098710-0382a496c814?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.6&w=144&h=144&q=80"
                     alt="profile img"
-                  /> -->
+                  />-->
                 </button>
               </div>
 
@@ -123,28 +119,23 @@
                         href="#"
                         class="block px-4 py-2 text-sm font-medium leading-5 text-left text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
                         v-ripple
-                        >Account settings</a
-                      >
+                      >Account settings</a>
                       <a
                         href="#"
                         class="block px-4 py-2 text-sm font-medium leading-5 text-left text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
                         v-ripple
-                        >Support</a
-                      >
+                      >Support</a>
                       <a
                         href="#"
                         class="block px-4 py-2 text-sm font-medium leading-5 text-left text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
                         v-ripple
-                        >License</a
-                      >
+                      >License</a>
                       <form @submit.prevent="signOut">
                         <button
                           type="submit"
                           class="block w-full px-4 py-2 text-sm font-medium leading-5 text-left text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
                           v-ripple
-                        >
-                          Sign out
-                        </button>
+                        >Sign out</button>
                       </form>
                     </div>
                   </div>
