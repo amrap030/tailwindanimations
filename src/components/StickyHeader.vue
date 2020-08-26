@@ -1,9 +1,9 @@
 <template>
   <div>
     <div
-      class="transition duration-300 ease-in-out border-b dark:border-black dark:bg-gray-800"
+      class="transition duration-300 ease-in-out dark:border-black dark:bg-gray-800 animate-pulse"
       :class="
-        mobileActive ? 'bg-purple-700 text-white' : 'bg-white text-gray-700'
+        mobileActive ? 'bg-purple-700 text-white' : 'bg-purple-700 text-white'
       "
     >
       <header class="px-6">
@@ -13,19 +13,21 @@
               :type="buttonType"
               :active="isActive"
               :size="size"
-              :color="mobileActive ? 'white' : '#374151'"
-              :active-color="mobileActive ? 'white' : '#374151'"
+              :color="mobileActive ? 'white' : 'white'"
+              :active-color="mobileActive ? 'white' : 'white'"
               v-on:toggle="onToggle"
               class="translation transform -translate-y-0.5"
               :class="[sideBarOpen && mobileActive ? 'translate-x-64' : '']"
             />
             <h1
               class="ml-4 text-2xl font-semibold leading-tight sm:ml-0 lg:ml-4 dark:text-gray-50"
-            >{{ this.$route.name }}</h1>
+            >
+              {{ this.$route.name }}
+            </h1>
           </div>
           <div class="flex">
             <button
-              class="text-gray-700 bg-gray-200 rounded-full dark:text-gray-100 dark:bg-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none"
+              class="text-white bg-purple-800 rounded-full dark:text-gray-100 dark:bg-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none"
               v-ripple
             >
               <svg
@@ -37,13 +39,15 @@
                 stroke-linejoin="round"
                 class="w-10 h-10 px-2 py-2 overflow-visible transition duration-150 ease-in-out"
               >
-                <path d="M18 8A6 6 0 106 8c0 7-3 9-3 9h18s-3-2-3-9zM13.73 21a2 2 0 01-3.46 0" />
+                <path
+                  d="M18 8A6 6 0 106 8c0 7-3 9-3 9h18s-3-2-3-9zM13.73 21a2 2 0 01-3.46 0"
+                />
               </svg>
             </button>
             <button
               @click="toggleDarkMode"
               aria-label="Toggle theme"
-              class="ml-2 text-gray-700 bg-gray-200 rounded-full dark:text-gray-100 dark:bg-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none"
+              class="ml-2 text-white bg-purple-800 rounded-full dark:text-gray-100 dark:bg-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none"
             >
               <svg
                 v-if="!getDark"
@@ -90,7 +94,7 @@
                     :customStyle="{
                       height: '2.5rem !important',
                       width: '2.5rem !important',
-                      fontSize: '15px !important'
+                      fontSize: '15px !important',
                     }"
                   ></Avatar>
                   <!-- <img
@@ -119,23 +123,28 @@
                         href="#"
                         class="block px-4 py-2 text-sm font-medium leading-5 text-left text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
                         v-ripple
-                      >Account settings</a>
+                        >Account settings</a
+                      >
                       <a
                         href="#"
                         class="block px-4 py-2 text-sm font-medium leading-5 text-left text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
                         v-ripple
-                      >Support</a>
+                        >Support</a
+                      >
                       <a
                         href="#"
                         class="block px-4 py-2 text-sm font-medium leading-5 text-left text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
                         v-ripple
-                      >License</a>
+                        >License</a
+                      >
                       <form @submit.prevent="signOut">
                         <button
                           type="submit"
                           class="block w-full px-4 py-2 text-sm font-medium leading-5 text-left text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
                           v-ripple
-                        >Sign out</button>
+                        >
+                          Sign out
+                        </button>
                       </form>
                     </div>
                   </div>
@@ -171,7 +180,7 @@ export default {
       color: "white",
       activeColor: "white",
       sideBarOpen: true,
-      mobileActive: isMobileOnly
+      mobileActive: isMobileOnly,
       // color: "#384150",
       // activeColor: "#384150",
       //windowWidth: window.innerWidth,
@@ -179,8 +188,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      getDark: "getDark"
-    })
+      getDark: "getDark",
+    }),
   },
   methods: {
     toggleDropdown() {
@@ -208,20 +217,20 @@ export default {
       console.log(active);
       this.sideBarOpen = active;
       this.$root.$emit("eventing", active);
-    }
+    },
   },
   mounted() {
     // window.onresize = () => {
     //   this.windowWidth = window.innerWidth;
     // };
-    this.$root.$on("bgclick", data => {
+    this.$root.$on("bgclick", (data) => {
       this.onToggle(data);
       this.isActive = !this.isActive;
     });
     if (window.innerWidth < 640) {
       this.isActive = false;
     }
-  }
+  },
 };
 </script>
 

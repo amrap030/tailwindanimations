@@ -36,3 +36,6 @@ day.json
 
 # Firebase
 .firebase
+firestore.indexes.json
+firestore.rulestest.js
+storage.rules

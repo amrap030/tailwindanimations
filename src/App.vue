@@ -26,12 +26,12 @@ export default {
   components: { ModalIdle, SideBar, StickyHeader },
   computed: {
     ...mapGetters({
-      getDark: "getDark"
+      getDark: "getDark",
     }),
     isIdle() {
       return this.$store.state.idleVue.isIdle;
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <main class="flex h-full p-6">Hallo4</main>
+    <main class="flex h-full p-6">Hallo5</main>
   </div>
 </template>
 
@@ -11,7 +11,7 @@ export default {
     return {};
   },
   computed: {},
-  methods: {}
+  methods: {},
 };
 </script>
 
